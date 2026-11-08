@@ -128,6 +128,7 @@ h2 { font-size: clamp(38px, 5.5vw, 70px); letter-spacing: -.065em; font-weight: 
 .education-orbit { border-color: #b8f36b40; }
 .institution { color: #c6ddc8; }
 .education-description, .certificate p { color: #b8cbbd; }
+.education-footnote { color: #b6cdb9; }
 .certificate-top .mono { color: #b8f36b; }
 .status-badge { color: #d3f6b5; border-color: #b8f36b47; background: #b8f36b10; }
 .projects-empty { background: linear-gradient(130deg, #23382a, #17241e); }
