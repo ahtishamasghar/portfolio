@@ -44,7 +44,7 @@ try {
 
   const response = await page.goto(base, { waitUntil: 'networkidle' })
   assert.equal(response?.status(), 200)
-  assert.equal(await page.locator('h1').innerText(), 'Muhammad Ahtisham Asghar')
+  assert.equal((await page.locator('h1').innerText()).replace(/\s+/g, ' ').trim(), 'Muhammad Ahtisham Asghar')
   assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'), `${site}/`)
   assert.equal(await page.locator('meta[property="og:image"]').getAttribute('content'), `${site}/og-image.png`)
 
