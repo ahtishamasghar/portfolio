@@ -270,3 +270,21 @@ test('kinetic effects remain decorative and respect reduced-motion preferences',
     ),
   ).toBe('none')
 })
+
+test('mobile layout keeps navigation compact and expanded skills at natural height', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.goto('/#skills')
+  const header = await page.locator('.header-inner').boundingBox()
+  expect(header!.height).toBeLessThanOrEqual(64)
+  const cards = page.locator('.skill-card')
+  const first = await cards.nth(0).boundingBox()
+  const second = await cards.nth(1).boundingBox()
+  expect(second!.y).toBeGreaterThan(first!.y + first!.height)
+  const linux = cards.filter({ has: page.getByRole('heading', { name: 'Linux', exact: true }) })
+  await linux.locator('summary').click()
+  await expect(linux).toHaveAttribute('open', '')
+  const expanded = await linux.boundingBox()
+  const next = await cards.nth(1).boundingBox()
+  expect(next!.y).toBeGreaterThanOrEqual(expanded!.y + expanded!.height)
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+})

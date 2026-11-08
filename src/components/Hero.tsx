@@ -49,7 +49,7 @@ function EditorialArtwork() {
           ))}
         </div>
         <div className="editorial-art-monogram">A<span>.</span></div>
-        <div className="editorial-art-sticker"><span>ALWAYS</span><strong>CURIOUS</strong><span>BY DESIGN ↗</span></div>
+        <div className="editorial-art-sticker"><span>FIELD NOTE / 001</span><strong>STAY CURIOUS.</strong><span>EXPLORE · BUILD · REFINE</span></div>
         <div className="editorial-art-index">01 / 03</div>
         <div className="art-telemetry">EXPLORATION IN MOTION</div>
         <div className="art-spectrum">{Array.from({ length: 17 }, (_, index) => <i key={index} />)}</div>
