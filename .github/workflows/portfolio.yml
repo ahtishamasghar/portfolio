@@ -33,6 +33,13 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Run desktop, mobile and accessibility tests
         run: npm run test:e2e
+      - name: Verify GitHub Pages project-path build and browser assets
+        env:
+          VITE_BASE_PATH: /portfolio/
+          VITE_SITE_URL: https://ahtishamasghar.github.io/portfolio
+        run: |
+          npm run build
+          node scripts/verify-project-path.mjs
       - name: Retain browser report on failure
         if: failure()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
