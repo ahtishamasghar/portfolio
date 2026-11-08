@@ -257,3 +257,16 @@ test('provides useful contact information without JavaScript', async ({ browser 
   )
   await context.close()
 })
+
+test('kinetic effects remain decorative and respect reduced-motion preferences', async ({ page }) => {
+  await page.goto('/')
+  await expect(page.locator('.motion-ticker')).toHaveAttribute('aria-hidden', 'true')
+  await expect(page.locator('.scroll-progress')).toHaveAttribute('aria-hidden', 'true')
+  await expect(page.locator('.art-spark')).toHaveCount(8)
+  await page.emulateMedia({ reducedMotion: 'reduce' })
+  expect(
+    await page.locator('.motion-ticker-track').evaluate((element) =>
+      getComputedStyle(element).animationName,
+    ),
+  ).toBe('none')
+})

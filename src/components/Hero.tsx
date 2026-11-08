@@ -28,6 +28,11 @@ function EditorialArtwork() {
           <text x="26" y="29" fill="white" fontSize="12" fontFamily="monospace">50° 11' N</text>
           <text x="411" y="555" fill="white" fontSize="12" fontFamily="monospace">FRAME 01</text>
         </svg>
+        <div className="art-sparks">
+          {Array.from({ length: 8 }, (_, index) => (
+            <span className={`art-spark art-spark-${index + 1}`} key={index} />
+          ))}
+        </div>
         <div className="editorial-art-monogram">A<span>.</span></div>
         <div className="editorial-art-sticker"><span>ALWAYS</span><strong>CURIOUS</strong><span>BY DESIGN ↗</span></div>
         <div className="editorial-art-index">01 / 03</div>
