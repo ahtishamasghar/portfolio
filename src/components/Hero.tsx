@@ -6,7 +6,22 @@ import { Reveal } from './Reveal'
 
 function EditorialArtwork() {
   return (
-    <div className="editorial-art" aria-hidden="true">
+    <div
+      className="editorial-art"
+      aria-hidden="true"
+      onPointerMove={(event) => {
+        if (event.pointerType !== 'mouse') return
+        const bounds = event.currentTarget.getBoundingClientRect()
+        const x = ((event.clientX - bounds.left) / bounds.width) * 100
+        const y = ((event.clientY - bounds.top) / bounds.height) * 100
+        event.currentTarget.style.setProperty('--cursor-x', `${x}%`)
+        event.currentTarget.style.setProperty('--cursor-y', `${y}%`)
+      }}
+      onPointerLeave={(event) => {
+        event.currentTarget.style.setProperty('--cursor-x', '50%')
+        event.currentTarget.style.setProperty('--cursor-y', '50%')
+      }}
+    >
       <div className="editorial-art-top">
         <span>FIELD NOTES — 001</span>
         <span>TECH / SYSTEMS / SECURITY</span>
@@ -36,6 +51,8 @@ function EditorialArtwork() {
         <div className="editorial-art-monogram">A<span>.</span></div>
         <div className="editorial-art-sticker"><span>ALWAYS</span><strong>CURIOUS</strong><span>BY DESIGN ↗</span></div>
         <div className="editorial-art-index">01 / 03</div>
+        <div className="art-telemetry">EXPLORATION IN MOTION</div>
+        <div className="art-spectrum">{Array.from({ length: 17 }, (_, index) => <i key={index} />)}</div>
       </div>
       <div className="editorial-art-bottom">
         <span>EXPLORE THE SYSTEM</span>

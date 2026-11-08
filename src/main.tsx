@@ -4,6 +4,7 @@ import App from './App'
 import './styles.css'
 import './editorial.css'
 import './motion.css'
+import './obsidian.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
