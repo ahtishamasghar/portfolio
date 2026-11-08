@@ -14,7 +14,11 @@ export function useInitialAnchor() {
       frame = requestAnimationFrame(() => {
         if (cancelled || window.location.hash !== initialHash) return
         let id: string
-        try { id = decodeURIComponent(initialHash.slice(1)) } catch { return }
+        try {
+          id = decodeURIComponent(initialHash.slice(1))
+        } catch {
+          return
+        }
         document.getElementById(id)?.scrollIntoView({ behavior: 'instant', block: 'start' })
       })
     }

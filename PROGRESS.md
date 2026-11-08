@@ -42,16 +42,27 @@ Completed:
 - Inspected desktop and mobile screenshots. GitHub profile returned HTTP 200. No browser JavaScript or asset errors were observed.
 - Lint, type checking, and production build passed again after the fixes.
 
-## Pending milestone
+## Milestone 3 — deployment configuration and documentation
 
-3. Deployment and documentation: official GitHub Pages Actions workflow, CI build/browser validation, comprehensive README, project/certification editing instructions, clean install verification, final commit/push, and PR if supported.
+Completed:
+
+- Official GitHub Pages Actions workflow with SHA-pinned official actions, validation on pushes/PRs, deployment only from main, scoped permissions, and actual Pages base-path/canonical-URL configuration.
+- Local `actionlint` validation passed. The actionlint release archive was checksum-verified before execution.
+- Comprehensive README covers local development, project structure, content editing, real project/certificate additions, deployment, and troubleshooting.
+- No-JavaScript identity/contact content is generated from centralized data. Original font licenses are distributed with the local fonts.
+- Fixed expanded skill descriptions being clipped, and added a geometry assertion to prevent regression. Added normal-motion and no-JavaScript checks.
+- Clean `npm ci`, formatting check, ESLint, TypeScript, and production build passed.
+- Final browser run: **24 passed** on desktop/mobile Chromium, including axe WCAG checks with zero violations.
+- Source is formatted with Prettier; reusable scripts and a committed lockfile are present.
+
+Remaining verification: run the project-subpath build and smoke check; prepare the PR if the GitHub API becomes accessible. Remote Actions and live deployment remain unverified.
 
 ## Known limitations and exact next steps
 
-1. Add official GitHub Pages deployment and validation workflows, then replace the old README with full documentation.
+1. Verify `VITE_BASE_PATH=/portfolio/ VITE_SITE_URL=https://ahtishamasghar.github.io/portfolio npm run build`, smoke-test the resulting asset URLs, then restore the normal default build. Prepare a PR against main if supported.
 2. Use installed Chromium at `/usr/bin/chromium` for local Playwright runs. Configure tests to accept `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium`; CI should install the matching Playwright browser.
 3. Run `npm run check` and `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npm run test:e2e -- --workers=2` after code changes. Tests use the production build on port 4173; the test runner manages that server.
-4. Verify a clean lockfile install and Pages project-path override. Safari/Firefox, a real screen reader, remote Actions, and public deployment have not been tested.
+4. Safari/Firefox, a real screen reader, remote Actions, and public deployment have not been tested. All currently executed local checks pass; clean lockfile installation is verified.
 5. Development server was started on port 5173. Future sessions must restart processes as needed (`npm run dev -- --port 5173 --strictPort`). Processes do not survive environment snapshots.
 6. In this cloud sandbox npm's default cache is not writable; use `npm_config_cache=/tmp/portfolio-npm-cache npm ci`. Normal local environments can use `npm ci`.
 7. No credentials belong in source files. No completed projects, experience, certifications, or verification links may be invented.

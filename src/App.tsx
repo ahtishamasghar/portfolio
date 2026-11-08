@@ -12,11 +12,22 @@ import { useInitialAnchor } from './useInitialAnchor'
 export default function App() {
   useInitialAnchor()
   return (
-    <LazyMotion features={domAnimation} strict><MotionConfig reducedMotion="user">
-      <a className="skip-link" href="#main">Skip to main content</a>
-      <Header />
-      <main id="main" tabIndex={-1}><Hero /><About /><Skills /><Learning /><Projects /><Contact /></main>
-      <Footer />
-    </MotionConfig></LazyMotion>
+    <LazyMotion features={domAnimation} strict>
+      <MotionConfig reducedMotion="user">
+        <a className="skip-link" href="#main">
+          Skip to main content
+        </a>
+        <Header />
+        <main id="main" tabIndex={-1}>
+          <Hero />
+          <About />
+          <Skills />
+          <Learning />
+          <Projects />
+          <Contact />
+        </main>
+        <Footer />
+      </MotionConfig>
+    </LazyMotion>
   )
 }

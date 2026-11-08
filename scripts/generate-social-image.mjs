@@ -3,11 +3,28 @@ import { chromium } from '@playwright/test'
 import { readFile } from 'node:fs/promises'
 import { portfolio } from '../src/content/portfolio.ts'
 
-const escape = (text) => text.replace(/[&<>"']/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character])
-const font = (await readFile(new URL('../node_modules/@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2', import.meta.url))).toString('base64')
-const browser = await chromium.launch({ executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH || undefined })
+const escape = (text) =>
+  text.replace(
+    /[&<>"']/g,
+    (character) =>
+      ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character],
+  )
+const font = (
+  await readFile(
+    new URL(
+      '../node_modules/@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2',
+      import.meta.url,
+    ),
+  )
+).toString('base64')
+const browser = await chromium.launch({
+  executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH || undefined,
+})
 try {
-  const page = await browser.newPage({ viewport: { width: 1200, height: 630 }, deviceScaleFactor: 1 })
+  const page = await browser.newPage({
+    viewport: { width: 1200, height: 630 },
+    deviceScaleFactor: 1,
+  })
   await page.setContent(`<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Portfolio social image</title><style>
     @font-face{font-family:Manrope;src:url(data:font/woff2;base64,${font}) format('woff2');font-weight:200 800}
     *{box-sizing:border-box}body{margin:0;width:1200px;height:630px;background:#080b12;color:#f0edf9;font-family:Manrope,sans-serif;padding:65px 80px;position:relative;overflow:hidden}
@@ -16,4 +33,6 @@ try {
   await page.evaluate(() => document.fonts.ready)
   await page.screenshot({ path: new URL('../public/og-image.png', import.meta.url).pathname })
   console.log('Generated public/og-image.png (1200 × 630).')
-} finally { await browser.close() }
+} finally {
+  await browser.close()
+}
