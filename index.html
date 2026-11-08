@@ -3,12 +3,37 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Test Portfolio</title>
+  <meta name="description" content="A personal portfolio of selected projects, skills, and ideas.">
+  <title>Your Name · Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="main.js" defer></script>
 </head>
 <body>
-  <main>
-    <h1>Test Portfolio</h1>
-    <p>test</p>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="container header">
+    <a class="brand" href="#home" aria-label="Home">YN<span>.</span></a>
+    <nav aria-label="Main navigation"><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact ↗</a></nav>
+  </header>
+  <main id="main">
+    <section id="home" class="container hero">
+      <p class="eyebrow">YOUR NAME / PERSONAL PORTFOLIO</p>
+      <h1>Thoughtful ideas.<br><span>Meaningful work.</span></h1>
+      <p class="intro">Hi, I’m Your Name. I build useful digital experiences with a focus on clarity, creativity, and the people who use them.</p>
+      <a class="button" href="#work">Explore my work <span aria-hidden="true">↘</span></a>
+      <div class="hero-note"><span class="dot"></span> Open to new opportunities</div>
+    </section>
+    <section id="work" class="container section">
+      <div class="section-heading"><h2>Selected work</h2><span>01 — 03</span></div>
+      <p class="section-intro">A space for the projects you’re proud of. Replace these examples with your own work.</p>
+      <div class="projects">
+        <article class="project"><div class="project-art art-one" aria-hidden="true"><span>Build<br>something<br>better.</span></div><div class="project-meta"><span>01 / WEB DEVELOPMENT</span><span>Sample project</span></div><h3>Project One</h3><p>Describe the problem you solved, your role, and the result. Add a live demo or repository link when it’s ready.</p></article>
+        <article class="project"><div class="project-art art-two" aria-hidden="true"><span class="orbit"></span></div><div class="project-meta"><span>02 / DESIGN & DEVELOPMENT</span><span>Sample project</span></div><h3>Project Two</h3><p>Show how you turned an idea into a useful experience. Highlight the tools and decisions that made a difference.</p></article>
+        <article class="project"><div class="project-art art-three" aria-hidden="true"><span>Make<br>it matter ↗</span></div><div class="project-meta"><span>03 / EXPERIMENT</span><span>Sample project</span></div><h3>Project Three</h3><p>Share something you explored or learned. Personal experiments belong here just as much as finished products.</p></article>
+      </div>
+    </section>
+    <section id="about" class="container section about"><div><p class="eyebrow">A LITTLE ABOUT ME</p><h2>Curious by nature.<br>Always building.</h2></div><div><p>Use this space to introduce yourself: what you do, what you care about, and what you’d like to work on next.</p><p>Tell a little of your story and give people a sense of the person behind the projects.</p><ul class="skills" aria-label="Skills"><li>HTML & CSS</li><li>JavaScript</li><li>Responsive design</li><li>Problem solving</li></ul></div></section>
+    <section id="contact" class="container section contact"><p class="eyebrow">HAVE SOMETHING IN MIND?</p><h2>Let’s make it happen.</h2><p>Replace the sample address below with your email to start a conversation.</p><a class="contact-link" href="mailto:you@example.com">you@example.com ↗</a></section>
   </main>
+  <footer class="container footer"><span>© <span id="year">2026</span> Your Name</span><a href="#home">Back to top ↑</a></footer>
 </body>
 </html>
