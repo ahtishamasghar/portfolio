@@ -6,7 +6,7 @@ Read this file and `git log -8 --oneline` before continuing. Inspect `git status
 
 ## Repository and deployment destination
 
-- Connected checkout: `/workspace/portfolio`, origin `ahtishamreal/portfolio`.
+- Connected checkout: `/workspace/portfolio`, canonical repository `ahtishamasghar/portfolio`. GitHub confirmed the move from `ahtishamreal/portfolio`; origin has been updated to the canonical address.
 - Requested public destination: `AHTISHAMASGHAR/AHTISHAMASGHAR.github.io`.
 - The requested destination currently returns `Repository not found` through the existing Git connection. GitHub API requests are also blocked by the environment network policy. Do not claim deployment or a pull request has succeeded without verification.
 - The user subsequently authorized milestone pushes to the connected repository. Preserve the intended user-site default base path `/`; deployment configuration must also support a project-site base when provided by GitHub Pages.
@@ -29,17 +29,29 @@ Validation:
 - `npm run typecheck`: passed.
 - `npm run build`: passed. Initial output approximately 110 kB gzip JavaScript, 7.5 kB gzip CSS, and 65 kB local WOFF2 fonts.
 
-## Pending milestones
+## Milestone 2 — browser validation and accessibility
 
-2. Browser validation and accessibility: inspect desktop/mobile screenshots, add meaningful Playwright/axe coverage, fix verified issues, generate the real 1200×630 Open Graph image, then commit/push.
+Completed:
+
+- Meaningful Playwright coverage on desktop and mobile Chromium: 20 tests passed.
+- Verified keyboard skip navigation, mobile menu/Escape/focus restoration, skill disclosures, real clipboard copying, and a manual-copy fallback.
+- Verified internal anchors, social/email URLs, reduced motion, and responsive layouts at 320, 390, 768, 1024, and 1440 pixels without horizontal overflow.
+- Automated axe WCAG A/AA checks passed on desktop, mobile, and the open mobile menu (zero violations).
+- Fixed a real mobile direct-anchor reload issue by aligning the initial hash after React and fonts finish loading.
+- Generated the 1200×630 Open Graph PNG and added a reproducible generator script. Metadata, favicon, crawler files, and social image all serve successfully.
+- Inspected desktop and mobile screenshots. GitHub profile returned HTTP 200. No browser JavaScript or asset errors were observed.
+- Lint, type checking, and production build passed again after the fixes.
+
+## Pending milestone
+
 3. Deployment and documentation: official GitHub Pages Actions workflow, CI build/browser validation, comprehensive README, project/certification editing instructions, clean install verification, final commit/push, and PR if supported.
 
 ## Known limitations and exact next steps
 
-1. Read the browser smoke-test result and inspect `/tmp/portfolio-desktop-first.png`; check responsive layouts including 320px, 390px, 768px, and 1440px.
+1. Add official GitHub Pages deployment and validation workflows, then replace the old README with full documentation.
 2. Use installed Chromium at `/usr/bin/chromium` for local Playwright runs. Configure tests to accept `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium`; CI should install the matching Playwright browser.
-3. Add tests for keyboard/mobile navigation, real links, disclosures, clipboard success and fallback, reduced motion, no horizontal overflow, accessibility, and metadata/assets.
-4. The Open Graph metadata references `public/og-image.png`, which still needs to be generated. The old README still describes the static starter and must be replaced.
+3. Run `npm run check` and `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npm run test:e2e -- --workers=2` after code changes. Tests use the production build on port 4173; the test runner manages that server.
+4. Verify a clean lockfile install and Pages project-path override. Safari/Firefox, a real screen reader, remote Actions, and public deployment have not been tested.
 5. Development server was started on port 5173. Future sessions must restart processes as needed (`npm run dev -- --port 5173 --strictPort`). Processes do not survive environment snapshots.
 6. In this cloud sandbox npm's default cache is not writable; use `npm_config_cache=/tmp/portfolio-npm-cache npm ci`. Normal local environments can use `npm ci`.
 7. No credentials belong in source files. No completed projects, experience, certifications, or verification links may be invented.

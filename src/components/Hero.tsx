@@ -43,7 +43,7 @@ export function Hero() {
       <div className="container hero-layout">
         <Reveal className="hero-content">
           <p className="hero-eyebrow"><span />{portfolio.hero.eyebrow}</p>
-          <h1 id="hero-title"><span className="hero-first-name">{portfolio.firstName}</span><span className="gradient-text">{portfolio.displayName}</span></h1>
+          <h1 id="hero-title"><span className="hero-first-name">{portfolio.firstName}</span>{' '}<span className="gradient-text">{portfolio.displayName}</span></h1>
           <p className="hero-headline">{portfolio.headline}</p>
           <p className="hero-introduction">{portfolio.hero.introduction}</p>
           <div className="hero-actions flex flex-wrap gap-3">
