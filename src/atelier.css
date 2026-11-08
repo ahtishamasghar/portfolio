@@ -76,7 +76,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
   font-size: 10px;
   letter-spacing: .14em;
 }
-.wordmark-label > span { color: #64748b; font-size: 8px; letter-spacing: .12em; }
+.wordmark-label > span { color: #526077; font-size: 8px; letter-spacing: .12em; }
 .desktop-nav { gap: 27px; }
 .desktop-nav a { color: #58677a; font-size: 12px; font-weight: 650; }
 .desktop-nav a:hover, .desktop-nav a[aria-current] { color: var(--atelier-cobalt); }
@@ -381,7 +381,7 @@ h2 {
 .signature-line { background: #afc9ff; }
 .principle { background: #fff; }
 .principle > svg { color: #3159c8; }
-.principle-number { color: #697f9c; }
+.principle-number { color: #52667d; }
 .principle h3 { color: #172740; font-size: 15px; }
 .principle p { color: #607087; font-size: 12px; }
 
@@ -482,12 +482,12 @@ h2 {
   max-width: 570px;
 }
 .skill-card::before { background: linear-gradient(110deg,transparent,#4674d20c,transparent); }
-.section-note { color: #697a91; }
+.section-note { color: #52647b; }
 .section-note > span { background: #3159c8; box-shadow: none; }
 
 /* Learning and credentials — elegant cards with meaningful contrast. */
 .column-label { color: #3159c8; }
-.column-label span { color: #8b98a9; }
+.column-label span { color: #52647a; }
 .education-card {
   background: #edf2fb;
   border: 1px solid #d2dff1;
@@ -518,7 +518,7 @@ h2 {
 .project-empty-art svg { color: #3159c8; }
 .project-empty-copy h3, .project-card h3 { color: #1d2b41; }
 .project-empty-copy p, .project-card > p { color: #576b82; }
-.empty-corner { color: #6b7a90; }
+.empty-corner { color: #52647a; }
 .project-card { color: #1d2b41; background: #fff; }
 .text-lavender, .text-link { color: #3159c8; }
 .text-link:hover { color: #1a397f; }
@@ -573,7 +573,7 @@ a.social-card:hover { background: #2b4365; border-color: #b7cbef; }
 .footer { border-top: 1px solid #dbe2ec; }
 .footer .monogram { color: #19273b; }
 .footer p { color: #53657c; }
-.footer p > span { color: #738195; }
+.footer p > span { color: #52647a; }
 .back-to-top { color: #253a59; }
 .back-to-top > span { border-radius: 8px; border-color: #b6c6da; }
 .back-to-top:hover { color: #3159c8; }
