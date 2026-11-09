@@ -14,7 +14,7 @@ export function Hero() {
         <Reveal className="hero-content">
           <p className="hero-eyebrow">
             <span className="live-dot" />
-            CYBERSECURITY. CODE. CURIOSITY.
+            AN EXPLORATION OF TECHNOLOGY & SECURITY
           </p>
           <h1 id="hero-title">
             <span className="hero-first-name">{portfolio.firstName}</span>{' '}
@@ -45,9 +45,11 @@ export function Hero() {
         <div className="hero-art-wrapper">
           <div className="sculpture-stage">
             <div className="sculpture-halo" aria-hidden="true" />
+            <div className="orbit-ring orbit-ring-one" aria-hidden="true" />
+            <div className="orbit-ring orbit-ring-two" aria-hidden="true" />
             <SignalSculpture />
             <span className="art-label art-label-top" aria-hidden="true">
-              A CURIOUS MIND IN MOTION
+              EXPLORING WHAT’S POSSIBLE
             </span>
             <div className="hero-board-tag">
               <GraduationCap size={25} aria-hidden="true" />
@@ -83,6 +85,15 @@ export function Hero() {
           Find me on GitHub
           <ArrowUpRight size={15} aria-hidden="true" />
         </ExternalLink>
+      </div>
+      <div className="hero-marquee" aria-hidden="true">
+        <div className="hero-marquee-track">
+          {[0, 1].map((copy) => (
+            <span key={copy}>
+              LEARN <i>✳</i> EXPLORE <i>✳</i> BUILD <i>✳</i> STAY CURIOUS <i>✳</i>
+            </span>
+          ))}
+        </div>
       </div>
     </section>
   )

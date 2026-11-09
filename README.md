@@ -1,6 +1,6 @@
 # Muhammad Ahtisham Asghar — Personal Portfolio
 
-A complete, light-first portfolio for a **Cybersecurity & Technology Enthusiast**, built with React, TypeScript, Vite, Tailwind CSS, Motion for React, and Lucide React. The design combines ivory surfaces, navy typography, pastel cards, cobalt accents, and an original animated wire sculpture in responsive layouts. No backend, API keys, analytics, or paid services are required.
+A complete, light-first portfolio for a **Cybersecurity & Technology Enthusiast**, built with React, TypeScript, Vite, Tailwind CSS, Motion for React, and Lucide React. The editorial design combines warm paper tones, ink typography, mint and indigo accents, and a visibly rotating wire sculpture in responsive layouts. No backend, API keys, analytics, or paid services are required.
 
 The content accurately represents an ongoing BS in Cybersecurity at the University of Sargodha. Learning areas are not presented as professional proficiency. Google certification is in progress; Cisco completion remains unconfirmed. The projects collection is intentionally empty, and LinkedIn is an explicit, non-clickable placeholder.
 
@@ -73,7 +73,9 @@ src/
   motion/                      Shared pause/resume and reduced-motion preferences
   App.tsx                       Page composition and Motion settings
   main.tsx                      React entry point
-  styles.css                    Tailwind import, font faces, theme and layout
+  styles.css                    Tailwind import, font faces, and base layout
+  hero-refresh.css              Editorial hero, navigation, and motion styling
+  sections-refresh.css          Lower-section visual styling
   useInitialAnchor.ts           Reliable initial fragment navigation
 index.html                      HTML shell; Vite inserts SEO and no-JS content
 vite.config.ts                  Base path, metadata, robots.txt and sitemap.xml
@@ -96,11 +98,11 @@ Start with **`src/content/portfolio.ts`**. This is the source of truth for perso
 - `education` and `certifications` hold the exact public learning statuses.
 - `seo` holds the title and description; `siteUrl` is the default canonical site URL.
 
-Section titles and visual labels live in their respective `src/components` files. Layout, colors, focus indicators, and breakpoints live in `src/styles.css`. Keep the contrast and reduced-motion behavior when changing the theme.
+Section titles and visual labels live in their respective `src/components` files. Layout, colors, focus indicators, and breakpoints live in `src/styles.css` and the two refresh stylesheets. Keep the contrast and reduced-motion behavior when changing the theme.
 
 ### Motion and visual styling
 
-The active theme is consolidated in `src/styles.css`; there are no legacy theme override imports. `SignalSculpture.tsx` renders the original wire sculpture in Canvas 2D without WebGL, image downloads, or additional runtime dependencies. It is capped at 24 fps and 1.5× pixel density, stops when off-screen or the tab is hidden, and responds subtly to mouse movement.
+The base theme is in `src/styles.css`, with the current editorial styling in `src/hero-refresh.css` and `src/sections-refresh.css`. `SignalSculpture.tsx` renders the original wire sculpture in Canvas 2D without WebGL, image downloads, or additional runtime dependencies. It is capped at 24 fps and 1.5× pixel density, stops when off-screen or the tab is hidden, and responds subtly to mouse movement.
 
 The visible **Motion on / Motion paused** control stops decorative animation and disables entrance transitions and smooth scrolling. System reduced-motion preferences take priority. The graphic is decorative and does not carry essential content. `MotionProvider` supplies the shared preference to the sculpture, reveal effects, and scroll progress.
 

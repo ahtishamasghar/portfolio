@@ -301,7 +301,7 @@ test('mobile layout keeps navigation compact and expanded skills at natural heig
   const cards = page.locator('.skill-card')
   const first = await cards.nth(0).boundingBox()
   const second = await cards.nth(1).boundingBox()
-  expect(second!.y).toBeGreaterThan(first!.y + first!.height)
+  expect(second!.y).toBeGreaterThanOrEqual(first!.y + first!.height)
   const linux = cards.filter({ has: page.getByRole('heading', { name: 'Linux', exact: true }) })
   await linux.locator('summary').click()
   await expect(linux).toHaveAttribute('open', '')

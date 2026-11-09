@@ -24,19 +24,29 @@ export function SignalSculpture() {
     const draw = () => {
       context.clearRect(0, 0, width, height)
       const time = phaseRef.current
-      const tilt = 0.56 + Math.sin(time * 0.25) * 0.13 + smoothY * 0.13
-      const rotation = -0.48 + Math.sin(time * 0.18) * 0.15 + smoothX * 0.13
-      const scale = Math.min(width, height) * 0.235
+      // Rotate the form through depth so the movement is visible without interaction.
+      const tilt = 0.65 + Math.sin(time * 0.4) * 0.18 + smoothY * 0.13
+      const rotation = -0.48 + Math.sin(time * 0.24) * 0.18 + smoothX * 0.13
+      const spin = time * 0.24
+      const cosSpin = Math.cos(spin)
+      const sinSpin = Math.sin(spin)
+      const cosTilt = Math.cos(tilt)
+      const sinTilt = Math.sin(tilt)
+      const cosRotation = Math.cos(rotation)
+      const sinRotation = Math.sin(rotation)
+      const scale = Math.min(width, height) * 0.205
       const point = (u: number, v: number) => {
         const ripple = 0.035 * Math.sin(u * 3 + time * 0.45)
         const radius = 1.25 + (0.48 + ripple) * Math.cos(v)
-        const x = radius * Math.cos(u)
+        const rawX = radius * Math.cos(u)
         const y = radius * Math.sin(u)
-        const z = (0.48 + ripple) * Math.sin(v)
-        const py = y * Math.cos(tilt) - z * Math.sin(tilt)
-        const pz = y * Math.sin(tilt) + z * Math.cos(tilt)
-        const px = x * Math.cos(rotation) - py * Math.sin(rotation)
-        const ry = x * Math.sin(rotation) + py * Math.cos(rotation)
+        const rawZ = (0.48 + ripple) * Math.sin(v)
+        const x = rawX * cosSpin + rawZ * sinSpin
+        const z = -rawX * sinSpin + rawZ * cosSpin
+        const py = y * cosTilt - z * sinTilt
+        const pz = y * sinTilt + z * cosTilt
+        const px = x * cosRotation - py * sinRotation
+        const ry = x * sinRotation + py * cosRotation
         const perspective = 4.8 / (4.8 - pz)
         return {
           x: width / 2 + px * scale * perspective,
@@ -45,10 +55,10 @@ export function SignalSculpture() {
         }
       }
       const gradient = context.createLinearGradient(width * 0.15, 0, width * 0.9, height)
-      gradient.addColorStop(0, '#597de0')
-      gradient.addColorStop(0.35, '#4564ce')
-      gradient.addColorStop(0.7, '#2e51bd')
-      gradient.addColorStop(1, '#9272da')
+      gradient.addColorStop(0, '#b9fff2')
+      gradient.addColorStop(0.35, '#68e1d2')
+      gradient.addColorStop(0.7, '#7bbcff')
+      gradient.addColorStop(1, '#d5f9ed')
       context.strokeStyle = gradient
       context.lineWidth = 0.7
       for (let ring = 0; ring < 38; ring++) {
@@ -59,7 +69,7 @@ export function SignalSculpture() {
           if (step === 0) context.moveTo(p.x, p.y)
           else context.lineTo(p.x, p.y)
         }
-        context.globalAlpha = 0.2 + 0.36 * ((Math.sin(v) + 1) / 2)
+        context.globalAlpha = 0.28 + 0.48 * ((Math.sin(v) + 1) / 2)
         context.stroke()
       }
       for (let ring = 0; ring < 64; ring++) {
@@ -70,14 +80,14 @@ export function SignalSculpture() {
           if (step === 0) context.moveTo(p.x, p.y)
           else context.lineTo(p.x, p.y)
         }
-        context.globalAlpha = 0.16 + 0.3 * ((Math.sin(u) + 1) / 2)
+        context.globalAlpha = 0.25 + 0.45 * ((Math.sin(u) + 1) / 2)
         context.stroke()
       }
       // Small points follow the surface, rather than flashing or simulating activity.
       for (let index = 0; index < 8; index++) {
         const p = point(index * 0.78 + time * 0.075, index * 1.93)
         context.globalAlpha = 0.55 + (p.z + 1.8) / 9
-        context.fillStyle = '#2c4bbb'
+        context.fillStyle = '#e2fff5'
         context.beginPath()
         context.arc(p.x, p.y, 1.5, 0, tau)
         context.fill()
