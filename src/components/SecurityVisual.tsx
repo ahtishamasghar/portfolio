@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
-import artwork from '../assets/blueprint.svg?raw'
+import artwork from '../assets/security-network.svg?raw'
 
-export function BlueprintVisual() {
+export function SecurityVisual() {
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export function BlueprintVisual() {
   return (
     <div
       ref={ref}
-      className="blueprint-visual"
+      className="security-visual"
       aria-hidden="true"
       dangerouslySetInnerHTML={{ __html: artwork }}
     />

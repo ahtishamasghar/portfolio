@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 440" fill="none">
+  <defs>
+    <linearGradient id="security-shield-fill" x1="188" y1="112" x2="336" y2="325" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8bdfcb" stop-opacity=".24"/>
+      <stop offset="1" stop-color="#3c929c" stop-opacity=".08"/>
+    </linearGradient>
+    <linearGradient id="security-shield-stroke" x1="178" y1="110" x2="342" y2="330" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#c7ffea"/>
+      <stop offset="1" stop-color="#64bcbc"/>
+    </linearGradient>
+    <linearGradient id="security-scan-fill" x1="260" y1="135" x2="260" y2="174" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#a2f6dc" stop-opacity="0"/>
+      <stop offset="1" stop-color="#a2f6dc" stop-opacity=".2"/>
+    </linearGradient>
+    <radialGradient id="security-light">
+      <stop stop-color="#78d9bc" stop-opacity=".2"/>
+      <stop offset="1" stop-color="#78d9bc" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="security-shield-clip">
+      <path d="M260 100c25 19 52 28 82 34v80c0 57-33 90-82 116-49-26-82-59-82-116v-80c30-6 57-15 82-34Z"/>
+    </clipPath>
+    <pattern id="security-grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0v32" stroke="#93c5c3" stroke-opacity=".065"/>
+    </pattern>
+  </defs>
+  <rect x="36" y="54" width="448" height="332" rx="24" fill="url(#security-grid)"/>
+  <ellipse class="security-glow" cx="260" cy="222" rx="168" ry="162" fill="url(#security-light)"/>
+  <g stroke="#86c7c0" stroke-opacity=".28" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M98 125h40q14 0 14 14v24q0 14 14 14h12M98 305h40q14 0 14-14v-24q0-14 14-14h12M422 125h-40q-14 0-14 14v24q0 14-14 14h-12M422 305h-40q-14 0-14-14v-24q0-14-14-14h-12M260 62v38M260 330v50"/>
+  </g>
+  <g class="security-flow" stroke="#b6f7df" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="14 160">
+    <path d="M98 125h40q14 0 14 14v24q0 14 14 14h12"/>
+    <path d="M98 305h40q14 0 14-14v-24q0-14 14-14h12"/>
+    <path d="M422 125h-40q-14 0-14 14v24q0 14-14 14h-12"/>
+    <path d="M422 305h-40q-14 0-14-14v-24q0-14-14-14h-12"/>
+    <path d="M260 62v38M260 380v-50"/>
+  </g>
+  <g class="security-shield">
+    <path d="M260 100c25 19 52 28 82 34v80c0 57-33 90-82 116-49-26-82-59-82-116v-80c30-6 57-15 82-34Z" fill="url(#security-shield-fill)" stroke="url(#security-shield-stroke)" stroke-width="2"/>
+    <path d="M260 118c21 14 42 22 64 28v68c0 45-25 73-64 95-39-22-64-50-64-95v-68c22-6 43-14 64-28Z" stroke="#a5e5d3" stroke-opacity=".18"/>
+    <g clip-path="url(#security-shield-clip)">
+      <g class="security-scan">
+        <rect x="178" y="135" width="164" height="39" fill="url(#security-scan-fill)"/>
+        <path d="M178 174h164" stroke="#adf1d9" stroke-opacity=".5"/>
+      </g>
+    </g>
+    <g stroke="#c8fae7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M244 195v-14a16 16 0 0 1 32 0v14"/>
+      <rect x="232" y="195" width="56" height="46" rx="12" fill="#87d5c5" fill-opacity=".1"/>
+      <path d="M260 214v10"/>
+    </g>
+    <circle cx="260" cy="214" r="3" fill="#c8fae7"/>
+    <path d="M244 265h32" stroke="#b2ead7" stroke-opacity=".5" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  <g class="security-node" stroke="#a4e3d3" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="42" y="97" width="56" height="56" rx="16" fill="#16394b" stroke-opacity=".5"/>
+    <rect x="54" y="111" width="32" height="21" rx="4"/>
+    <path d="M62 139h16m-8-7v7"/>
+    <rect x="422" y="97" width="56" height="56" rx="16" fill="#16394b" stroke-opacity=".5"/>
+    <rect x="436" y="108" width="28" height="14" rx="4"/>
+    <rect x="436" y="128" width="28" height="14" rx="4"/>
+    <path d="M442 115h1m-1 20h1m7-20h7m-7 20h7"/>
+    <rect x="42" y="277" width="56" height="56" rx="16" fill="#16394b" stroke-opacity=".5"/>
+    <circle cx="62" cy="301" r="6"/>
+    <path d="m67 305 13 13m-6-6 4-4m-1 7 4-4"/>
+    <rect x="422" y="277" width="56" height="56" rx="16" fill="#16394b" stroke-opacity=".5"/>
+    <path d="M438 295h24m-24 10h24m-24 10h24"/>
+    <path d="M444 291v8m12 2v8m-12 2v8" stroke-width="3"/>
+  </g>
+  <g fill="#b5ecd7" stroke="#17394b" stroke-width="5">
+    <circle cx="260" cy="59" r="7"/>
+    <circle cx="260" cy="383" r="7"/>
+  </g>
+</svg>

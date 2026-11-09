@@ -260,32 +260,40 @@ test('provides useful contact information without JavaScript', async ({ browser 
 
 test('decorative animation respects the device reduced-motion preference', async ({ page }) => {
   await page.goto('/')
-  await expect(page.locator('.blueprint-visual')).toHaveAttribute('aria-hidden', 'true')
+  await expect(page.locator('.security-visual')).toHaveAttribute('aria-hidden', 'true')
   await expect(page.locator('.scroll-progress')).toHaveAttribute('aria-hidden', 'true')
-  await expect(page.locator('canvas, .orbit-ring')).toHaveCount(0)
+  await expect(page.locator('canvas, .orbit-ring, .hero-board-tag')).toHaveCount(0)
+  await expect(page.locator('.security-shield')).toBeVisible()
+  await expect(page.locator('.security-scan')).toHaveCSS('animation-name', 'none')
   await expect(
     page.getByRole('button', { name: 'Reduced motion enabled by your device' }),
   ).toBeDisabled()
-  const flow = page.locator('.blueprint-flow')
+  const flow = page.locator('.security-flow')
   await expect(flow).toHaveCSS('animation-name', 'none')
   const before = await flow.evaluate((element) => getComputedStyle(element).strokeDashoffset)
   await page.waitForTimeout(180)
   expect(await flow.evaluate((element) => getComputedStyle(element).strokeDashoffset)).toBe(before)
 })
 
-test('visitors can pause and resume the animated blueprint', async ({ page }) => {
+test('visitors can pause and resume the security animation', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'no-preference' })
   await page.goto('/')
-  const visual = page.locator('.blueprint-visual')
-  const flow = page.locator('.blueprint-flow')
+  const visual = page.locator('.security-visual')
+  const flow = page.locator('.security-flow')
   await visual.scrollIntoViewIfNeeded()
   await expect(visual).toHaveAttribute('data-active', 'true')
+  const scan = page.locator('.security-scan')
+  const scanBefore = await scan.evaluate((element) => getComputedStyle(element).transform)
+  await expect
+    .poll(() => scan.evaluate((element) => getComputedStyle(element).transform))
+    .not.toBe(scanBefore)
   const before = await flow.evaluate((element) => getComputedStyle(element).strokeDashoffset)
   await expect
     .poll(() => flow.evaluate((element) => getComputedStyle(element).strokeDashoffset))
     .not.toBe(before)
   await page.getByRole('button', { name: 'Pause animations' }).click()
   await expect(page.locator('html')).toHaveAttribute('data-motion', 'off')
+  await expect(scan).toHaveCSS('animation-name', 'none')
   await expect(flow).toHaveCSS('animation-name', 'none')
   const paused = await flow.evaluate((element) => getComputedStyle(element).strokeDashoffset)
   await page.waitForTimeout(180)

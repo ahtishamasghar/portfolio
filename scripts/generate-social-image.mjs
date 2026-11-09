@@ -17,8 +17,11 @@ const font = (
     ),
   )
 ).toString('base64')
-// Reuse the same local angular artwork as the live hero.
-const blueprint = await readFile(new URL('../src/assets/blueprint.svg', import.meta.url), 'utf8')
+// Reuse the same local security artwork as the live hero.
+const securityArtwork = await readFile(
+  new URL('../src/assets/security-network.svg', import.meta.url),
+  'utf8',
+)
 const browser = await chromium.launch({
   executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH || undefined,
 })
@@ -29,14 +32,14 @@ try {
   })
   await page.setContent(`<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Portfolio social image</title><style>
   @font-face{font-family:Manrope;src:url(data:font/woff2;base64,${font}) format('woff2');font-weight:200 800}
-  *{box-sizing:border-box}body{margin:0;width:1200px;height:630px;background:#f5f3ed;color:#142c36;font-family:Manrope,sans-serif;padding:54px 70px;position:relative;overflow:hidden;isolation:isolate}
+  *{box-sizing:border-box}body{margin:0;width:1200px;height:630px;background:#f6f9f8;color:#142c36;font-family:Manrope,sans-serif;padding:54px 70px;position:relative;overflow:hidden;isolation:isolate}
   .label{display:flex;gap:11px;align-items:center;font-size:11px;letter-spacing:1.7px;color:#50617d;margin:0 0 37px}.label:before{content:'';width:7px;height:7px;border-radius:50%;background:#27765f;box-shadow:0 0 0 5px #27765f0b}
-  .name{font-size:76px;line-height:1.07;letter-spacing:-4px;margin:0;font-weight:650;width:590px;position:relative;z-index:1}.first{display:block;font-size:35px;color:#536b6d;font-weight:400;letter-spacing:-1px;margin-bottom:16px}.last{display:block;max-width:470px;color:#173f48}.role{font-size:18px;color:#304b4c;margin-top:27px;letter-spacing:-.3px}
-  .art-panel{position:absolute;right:60px;top:62px;width:450px;height:450px;border:1px solid #fff;border-radius:0;background:linear-gradient(145deg,#173f48,#214e54 60%,#173648);box-shadow:0 30px 70px #173f480b;z-index:-1;overflow:hidden}
+  .name{font-size:76px;line-height:1.07;letter-spacing:-4px;margin:0;font-weight:650;width:590px;position:relative;z-index:1}.first{display:block;font-size:35px;color:#536b6d;font-weight:400;letter-spacing:-1px;margin-bottom:16px}.last{display:block;max-width:470px;color:#163c4b}.role{font-size:18px;color:#304b4c;margin-top:27px;letter-spacing:-.3px}
+  .art-panel{position:absolute;right:60px;top:62px;width:450px;height:450px;border:1px solid #fff;border-radius:30px;background:radial-gradient(ellipse at 50% 45%,#245a62,#163b4a 52%,#112d3f);box-shadow:0 30px 70px #163c4b0b;z-index:-1;overflow:hidden}
   .grid{position:absolute;inset:0;background-image:linear-gradient(#27765f08 1px,transparent 1px),linear-gradient(90deg,#27765f08 1px,transparent 1px);background-size:30px 30px;mask-image:radial-gradient(ellipse,black,transparent 75%)}
   .art{position:absolute;inset:0}svg{width:100%;height:100%}.art-note{position:absolute;bottom:28px;left:0;right:0;text-align:center;color:#d4eee5;letter-spacing:2px;font-size:9px}
   .footer{position:absolute;bottom:36px;left:70px;right:70px;border-top:1px solid #142c3614;padding-top:20px;display:flex;justify-content:space-between;font-size:10px;color:#566780;letter-spacing:1.3px}.footer strong{font-weight:600;color:#27765f}
-  </style></head><body><p class="label">PERSONAL PORTFOLIO</p><h1 class="name"><span class="first">${escape(portfolio.firstName)}</span><span class="last">${escape(portfolio.displayName)}</span></h1><p class="role">${escape(portfolio.headline)}</p><div class="art-panel"><div class="grid"></div><div class="art">${blueprint}</div><div class="art-note">SECURITY · SYSTEMS · CODE</div></div><div class="footer"><span>CURIOUS ABOUT TECHNOLOGY. THOUGHTFUL ABOUT SECURITY.</span><strong>${escape(portfolio.githubHandle)}</strong></div></body></html>`)
+  </style></head><body><p class="label">PERSONAL PORTFOLIO</p><h1 class="name"><span class="first">${escape(portfolio.firstName)}</span><span class="last">${escape(portfolio.displayName)}</span></h1><p class="role">${escape(portfolio.headline)}</p><div class="art-panel"><div class="grid"></div><div class="art">${securityArtwork}</div><div class="art-note">SECURITY · SYSTEMS · CODE</div></div><div class="footer"><span>CURIOUS ABOUT TECHNOLOGY. THOUGHTFUL ABOUT SECURITY.</span><strong>${escape(portfolio.githubHandle)}</strong></div></body></html>`)
   await page.evaluate(() => document.fonts.ready)
   await page.screenshot({ path: new URL('../public/og-image.png', import.meta.url).pathname })
   console.log('Generated public/og-image.png (1200 × 630).')

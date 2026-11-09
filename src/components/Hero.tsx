@@ -1,9 +1,9 @@
-import { ArrowDown, ArrowUpRight, Code2, Globe2, Shield, GraduationCap } from 'lucide-react'
+import { ArrowDown, ArrowUpRight, Code2, Globe2, Shield } from 'lucide-react'
 import { portfolio } from '../content/portfolio'
 import { Github } from './BrandIcons'
 import { ExternalLink } from './Primitives'
 import { Reveal } from './Reveal'
-import { BlueprintVisual } from './BlueprintVisual'
+import { SecurityVisual } from './SecurityVisual'
 import { MotionToggle } from './MotionToggle'
 
 export function Hero() {
@@ -43,18 +43,11 @@ export function Hero() {
           </div>
         </Reveal>
         <div className="hero-art-wrapper">
-          <div className="blueprint-stage">
-            <BlueprintVisual />
+          <div className="security-stage">
+            <SecurityVisual />
             <span className="art-label art-label-top" aria-hidden="true">
-              EXPLORING WHAT’S POSSIBLE
+              A MINDSET FOR SECURITY
             </span>
-            <div className="hero-board-tag">
-              <GraduationCap size={25} aria-hidden="true" />
-              <span>
-                <strong>Learning. Exploring. Building.</strong>
-                <small>BS Cybersecurity · In progress</small>
-              </span>
-            </div>
           </div>
           <div className="art-controls">
             <span>Explore. Understand. Build.</span>

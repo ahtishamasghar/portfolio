@@ -18,7 +18,7 @@
 @theme {
   --font-sans: 'Manrope Variable', sans-serif;
   --font-mono: 'JetBrains Mono Variable', monospace;
-  --color-lavender: #3558e8;
+  --color-lavender: #176d70;
 }
 
 :root {
@@ -81,7 +81,7 @@ button:focus-visible,
 a:focus-visible,
 summary:focus-visible,
 input:focus-visible {
-  outline: 2px solid #3558e8;
+  outline: 2px solid var(--accent);
   outline-offset: 5px;
 }
 section:focus,
@@ -89,9 +89,9 @@ main:focus {
   outline: none;
 }
 ::selection {
-  color: #18388c;
+  color: #174d4e;
 
-  background: #dbe5ff;
+  background: #d0eee0;
 }
 .container {
   width: min(1240px, calc(100% - 40px));
@@ -436,7 +436,7 @@ h1 .name-period {
   width: 100%;
   margin: 0;
 }
-.blueprint-stage {
+.security-stage {
   position: relative;
   width: 100%;
 
@@ -1417,7 +1417,7 @@ a.social-card:hover {
     margin-right: -25px;
     width: calc(100% + 25px);
   }
-  .blueprint-stage {
+  .security-stage {
     aspect-ratio: 0.9;
   }
   .art-controls {
@@ -1540,7 +1540,7 @@ a.social-card:hover {
     margin-left: -10px;
     margin-right: -20px;
   }
-  .blueprint-stage {
+  .security-stage {
     aspect-ratio: 1;
   }
   .art-controls {
@@ -1713,41 +1713,13 @@ html[data-motion='off'] *::after {
   right: 0;
   height: 2px;
 
-  background: linear-gradient(90deg, #3558e8, #a2b8ff);
+  background: linear-gradient(90deg, #176d70, #91d8bb);
   transform-origin: left;
   z-index: 80;
   pointer-events: none;
 }
 
 /* Surface variation and responsive composition. */
-.hero-board-tag {
-  position: absolute;
-  bottom: 25px;
-  left: 20px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 13px 18px;
-  border: 1px solid #fff;
-  background: #fffffff0;
-  box-shadow: 0 10px 25px #30498710;
-  border-radius: 12px;
-  color: #233b75;
-  font-size: 12px;
-}
-.hero-board-tag svg {
-  color: #4768d4;
-}
-.hero-board-tag strong {
-  display: block;
-  font-weight: 600;
-}
-.hero-board-tag small {
-  display: block;
-  margin-top: 3px;
-  font-size: 10px;
-  color: #60739b;
-}
 .principle:nth-child(2) {
   background: #f0f8f6;
   border-color: #d9eae4;
@@ -1819,7 +1791,7 @@ html[data-motion='off'] *::after {
     width: 100%;
     margin: 0;
   }
-  .blueprint-stage {
+  .security-stage {
     aspect-ratio: 0.9;
   }
   .hero-caption {
@@ -1857,7 +1829,7 @@ html[data-motion='off'] *::after {
     margin: 0;
     padding: 22px;
   }
-  .blueprint-stage {
+  .security-stage {
     aspect-ratio: 1.08;
   }
   .hero-headline {
