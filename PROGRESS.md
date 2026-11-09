@@ -2,16 +2,16 @@
 
 _Last updated: 2026-11-09 (Asia/Karachi). This document supersedes the original Codex Cloud milestones and the outdated deployment notes._
 
-## Current status — professional redesign in progress
+## Current status — professional redesign, deployment verified
 
 - **Canonical repository:** [ahtishamasghar/portfolio](https://github.com/ahtishamasghar/portfolio)
 - **Production branch:** `main`; the user has requested recent design and animation changes directly on `main`.
 - **GitHub Pages URL:** https://ahtishamasghar.github.io/portfolio/
 - **Deployment method:** GitHub Actions builds the Vite site for the `/portfolio/` base path and deploys the generated `dist/` artifact when the validated `main` branch changes.
-- **Latest verified source commit before this documentation update:** `c7cd49279e068c8fbf713711716dac5eb7fc0130` — `Improve small-label contrast for accessible editorial theme`.
-- **Latest verified deployment:** [GitHub Actions run #42519464660](https://github.com/ahtishamasghar/portfolio/actions/runs/42519464660), **success**. Validation, Pages artifact build, and Pages deployment all succeeded. The associated Playwright suite reported **28 passed**.
+- **Latest verified source commit before this documentation update:** `35ad742` — `Redesign portfolio with professional layout and controllable motion`.
+- **Latest verified deployment:** [GitHub Actions run #42546375876](https://github.com/ahtishamasghar/portfolio/actions/runs/42546375876), **success**. Validation, Pages artifact build, and Pages deployment all succeeded. The local corresponding Playwright suite reported **30 passed**.
 - **Public browser verification:** GitHub confirms successful publication. A separate manual visual check of the live public site across browsers/devices is still recommended; do not equate a successful workflow with independent visual approval.
-- **Current implementation:** professional dark editorial redesign with a procedural wire sculpture, larger typography, cobalt accents, a single consolidated stylesheet, and controllable animation. The earlier ATELIER design is historical. Latest redesign deployment verification is pending; the successful run above describes the previous baseline.
+- **Current implementation:** professional dark editorial redesign with a procedural wire sculpture, larger typography, cobalt accents, a single consolidated stylesheet, and controllable animation. The earlier ATELIER design is historical. The first redesign checkpoint deployed successfully in the run above. The final copy/social-image refinement is a subsequent checkpoint and must be verified separately.
 
 ## Resume instructions
 
@@ -103,14 +103,23 @@ Completed:
 - Desktop/mobile Playwright: **30 passed**, including zero axe violations, real animation pause/resume, reduced motion, keyboard navigation, and clipboard fallback.
 - `/portfolio/` production build and browser smoke test: passed. Default build restored afterward.
 
-## Exact next steps
+## Milestone 7 — final polish and handoff
 
-1. Finish the remaining editorial refinements, refresh the social preview/favicon, and correct the stale README. Inspect desktop/tablet/mobile screenshots.
-2. Run affected validation, update this log, commit, and push to `main` without force. Fetch and check for concurrent changes before each push.
-3. Inspect the GitHub Actions web run for the exact pushed commit. `api.github.com` and the public Pages domain are currently denied by the cloud network policy; Git operations and GitHub web pages work. Do not claim a fresh deployment is verified based on older successful runs.
-4. A temporary Git stash named “Professional redesign draft before syncing latest main” preserves the initial draft; it has been integrated. Do not reapply it. The old feature branch is historical; continue on `main`.
-5. For local tests use `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium`. `scripts/verify-project-path.mjs` now accepts the same override, while CI uses its installed matching browser.
+- Refined section headings and contact copy for clear, direct presentation.
+- Regenerated the 1200×630 Open Graph image with matching typography and the wire sculpture. Updated the favicon to match the new identity.
+- Corrected README deployment status, theme architecture, and motion controls; retained full local-development, content-editing, project, certification, and Pages instructions.
+- Inspected desktop, tablet, and mobile screenshots. Mobile remains a single-column layout with readable type and a compact header.
+- Formatting, lint, type check, production build, and **30 desktop/mobile Playwright tests passed** after these changes; accessibility scans report zero violations.
+- The previous redesign checkpoint (`35ad742`) is independently confirmed successful by the GitHub Actions web page: run `42546375876`, including Pages deployment.
+
+## Exact next steps and verification limits
+
+1. Inspect the Actions run for the final polish commit following `35ad742`. Record the exact result; do not infer success from the prior deployment. Code and assets are locally verified and ready.
+2. Continue from `main` and this progress log. Fetch and inspect concurrent changes before editing or pushing; never force-push or restart the project.
+3. `api.github.com` and the live Pages domain are denied by the current cloud network policy. Git and GitHub web pages work. Verify Actions via its web run; independent live-site visual inspection must wait until the Pages domain is allowed. Local desktop/tablet/mobile screenshots have been inspected.
+4. A temporary stash named “Professional redesign draft before syncing latest main” preserves the initial draft. It is already integrated; do not reapply it. The old feature branch is historical.
+5. Use `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium` for local browser checks and `scripts/verify-project-path.mjs`; CI installs the matching browser itself.
 6. Real Safari/Firefox, screen readers, and hands-on device testing remain outside the executed Chromium/axe checks.
 7. Never invent credentials, employment, completed projects, certification achievements, or LinkedIn links.
 
-Current session changes are tested locally. The new deployment must still be checked after pushing; the prior successful production baseline is recorded above.
+All requested design and animation implementation is complete. The final polish deployment verification is the only pending task for this milestone.

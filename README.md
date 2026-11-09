@@ -1,10 +1,10 @@
 # Muhammad Ahtisham Asghar — Personal Portfolio
 
-A complete, dark-first portfolio for a **Cybersecurity & Technology Enthusiast**, built with React, TypeScript, Vite, Tailwind CSS, Motion for React, and Lucide React. The design uses locally hosted typography, original geometric artwork, blue/violet accents, and responsive layouts. No backend, API keys, analytics, or paid services are required.
+A complete, dark-first portfolio for a **Cybersecurity & Technology Enthusiast**, built with React, TypeScript, Vite, Tailwind CSS, Motion for React, and Lucide React. The design uses strong editorial typography, a charcoal and cobalt palette, an original animated wire sculpture, and responsive layouts. No backend, API keys, analytics, or paid services are required.
 
 The content accurately represents an ongoing BS in Cybersecurity at the University of Sargodha. Learning areas are not presented as professional proficiency. Google certification is in progress; Cisco completion remains unconfirmed. The projects collection is intentionally empty, and LinkedIn is an explicit, non-clickable placeholder.
 
-**Deployment status:** source and deployment configuration are provided; a live GitHub Pages deployment has not yet been verified. See [PROGRESS.md](PROGRESS.md) for current checkpoints, test evidence, and continuation instructions.
+**Production site:** https://ahtishamasghar.github.io/portfolio/. The existing GitHub Pages workflow is configured and has deployed previous releases. New changes are validated and deployed from `main`; see [PROGRESS.md](PROGRESS.md) for the latest verified revision and any outstanding checks.
 
 ## Local development
 
@@ -69,7 +69,8 @@ public/
 scripts/generate-social-image.mjs
 src/
   content/portfolio.ts          Identity, copy, skills, education, certificates, projects
-  components/                  Small section and interface components
+  components/                  Sections, animation controls, and procedural sculpture
+  motion/                      Shared pause/resume and reduced-motion preferences
   App.tsx                       Page composition and Motion settings
   main.tsx                      React entry point
   styles.css                    Tailwind import, font faces, theme and layout
@@ -96,6 +97,12 @@ Start with **`src/content/portfolio.ts`**. This is the source of truth for perso
 - `seo` holds the title and description; `siteUrl` is the default canonical site URL.
 
 Section titles and visual labels live in their respective `src/components` files. Layout, colors, focus indicators, and breakpoints live in `src/styles.css`. Keep the contrast and reduced-motion behavior when changing the theme.
+
+### Motion and visual styling
+
+The active theme is consolidated in `src/styles.css`; there are no legacy theme override imports. `SignalSculpture.tsx` renders the original wire sculpture in Canvas 2D without WebGL, image downloads, or additional runtime dependencies. It is capped at 24 fps and 1.5× pixel density, stops when off-screen or the tab is hidden, and responds subtly to mouse movement.
+
+The visible **Motion on / Motion paused** control stops decorative animation and disables entrance transitions and smooth scrolling. System reduced-motion preferences take priority. The graphic is decorative and does not carry essential content. `MotionProvider` supplies the shared preference to the sculpture, reveal effects, and scroll progress.
 
 After editing the name or headline, regenerate the social image and commit it:
 
@@ -133,9 +140,9 @@ Allowed statuses are `In Progress`, `Completion status to be confirmed`, and `Co
 
 ## GitHub Pages deployment
 
-The requested destination is **`AHTISHAMASGHAR/AHTISHAMASGHAR.github.io`**, whose user-site address is `https://ahtishamasghar.github.io/`. The default Vite base is `/`, appropriate for that repository name.
+The active repository is **`AHTISHAMASGHAR/portfolio`**, deployed as a project site at `https://ahtishamasghar.github.io/portfolio/`. The original user-site target was `AHTISHAMASGHAR/AHTISHAMASGHAR.github.io`; the configuration still supports it if the repository is renamed later.
 
-The currently connected source repository is **`AHTISHAMASGHAR/portfolio`** (formerly `ahtishamreal/portfolio`). If you retain that repository name, its default Pages address is `https://ahtishamasghar.github.io/portfolio/`. The workflow reads the actual configured Pages URL and base path, so both repository layouts are supported without editing source code.
+The workflow reads the actual configured Pages URL and base path, so both repository layouts are supported. Local development uses `/`; production receives `/portfolio/` from GitHub Pages.
 
 1. Make sure the source exists in the intended GitHub repository. For the user-site address, the repository must be named `AHTISHAMASGHAR.github.io`; you can rename the source repository in GitHub settings or transfer the reviewed code into that repository.
 2. Open **Settings → Pages → Build and deployment → Source**, and choose **GitHub Actions**. Do not choose deployment from a source branch for this Vite application.

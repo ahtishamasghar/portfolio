@@ -26,17 +26,7 @@ export function Skills() {
   return (
     <section id="skills" className="section container" tabIndex={-1} aria-label="Technical skills">
       <Reveal>
-        <SectionHeading
-          number="02"
-          label="MY GROWING TOOLKIT"
-          title={
-            <>
-              Foundations for
-              <br />
-              <span className="muted-title">what comes next.</span>
-            </>
-          }
-        >
+        <SectionHeading number="02" label="TECHNICAL TOOLKIT" title={<>Tools I’m growing with.</>}>
           Technologies and areas I’m learning and working with. Select a card to explore my focus.
         </SectionHeading>
       </Reveal>

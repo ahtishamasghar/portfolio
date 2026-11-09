@@ -39,12 +39,12 @@ export function Learning() {
       <Reveal>
         <SectionHeading
           number="03"
-          label="THE LEARNING JOURNEY"
+          label="EDUCATION & LEARNING"
           title={
             <>
-              Progress with
+              Building a solid
               <br />
-              <span className="muted-title">purpose.</span>
+              <span className="muted-title">foundation.</span>
             </>
           }
         >

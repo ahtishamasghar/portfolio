@@ -83,9 +83,9 @@ export function Contact() {
               LET’S CONNECT
             </p>
             <h2 id="contact-heading">
-              Great conversations.
+              Let’s start a
               <br />
-              <span className="gradient-text">New possibilities.</span>
+              <span className="gradient-text">conversation.</span>
             </h2>
             <p>{portfolio.contact.introduction}</p>
             <div className="contact-actions">
@@ -129,7 +129,8 @@ export function Contact() {
               </div>
             )}
             <p className="social-footnote">
-              <span aria-hidden="true" />A little curiosity can go a long way.
+              <span aria-hidden="true" />
+              Good ideas often start with a conversation.
             </p>
           </div>
         </div>

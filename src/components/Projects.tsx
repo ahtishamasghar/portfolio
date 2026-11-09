@@ -74,9 +74,9 @@ export function Projects() {
             <div className="project-empty-copy">
               <StatusBadge>In the making</StatusBadge>
               <h3>
-                Good things take
+                From learning
                 <br />
-                thoughtful work.
+                to building.
               </h3>
               <p>
                 I’m exploring, experimenting, and putting what I learn into practice. This space
