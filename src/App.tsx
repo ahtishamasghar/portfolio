@@ -9,7 +9,7 @@ import { ScrollProgress } from './components/MotionEffects'
 import { Projects } from './components/Projects'
 import { Skills } from './components/Skills'
 import { MotionProvider } from './motion/MotionProvider'
-import { ThemeProvider } from './theme/ThemeContext'
+import { ThemeProvider } from './theme'
 import { useInitialAnchor } from './useInitialAnchor'
 
 export default function App() {
