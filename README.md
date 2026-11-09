@@ -1,6 +1,6 @@
 # Muhammad Ahtisham Asghar — Personal Portfolio
 
-A complete, premium, modern, and highly professional portfolio for a **Cybersecurity & Technology Enthusiast**, built with React, TypeScript, Vite, Tailwind CSS, Motion for React, and Lucide React. The design features a sophisticated deep obsidian cyber-defense theme with electric cyan, azure, and live emerald telemetry accents, refined glassmorphic cards, polished typography, and an animated shield-and-network security visual. No backend, API keys, analytics, or paid services are required.
+A complete, premium, modern, and highly professional portfolio for a **Cybersecurity & Technology Enthusiast**, built with React, TypeScript, Vite, Tailwind CSS, Motion for React, and Lucide React. The portfolio features a dual-theme architecture: an **Obsidian Cyber-Defense** dark theme with electric cyan and live emerald telemetry, and a crisp **Titanium & Royal Cobalt** light theme with high-contrast slate typography. Both themes are fully accessible, support system preferences and manual toggling, and adapt the animated shield-and-network security visual. No backend, API keys, analytics, or paid services are required.
 
 The content accurately represents an ongoing BS in Cybersecurity at the University of Sargodha. Learning areas are not presented as professional proficiency. Google certification is in progress; Cisco completion remains unconfirmed. The projects collection is intentionally empty, and LinkedIn is an explicit, non-clickable placeholder.
 
