@@ -197,7 +197,10 @@ The user requested a complete redesign into a premium, modern, and highly profes
   - Education & Certifications roadmap with provider badges, status telemetry, and credential link support.
   - Projects command card with floating geometric blueprint illustration and Room to Grow watermark.
   - Secure Communications contact console with copy-to-clipboard status announcement and fallback input.
-- **Accessibility & Motion Integrity:** Preserved all semantic landmarks, ARIA states, skip navigation, reduced motion support, manual animation pause/resume, and zero-JS noscript fallback. All contracts tested by Playwright remain 100% satisfied.
+- **Accessibility & Motion Integrity:** Preserved all semantic landmarks, ARIA states, skip navigation, reduced motion support, manual animation pause/resume, and zero-JS noscript fallback.
+- **CI Test Suite Refinements (Commit c14bf8d):**
+  - *Reduced-motion fix*: Added explicit `await page.emulateMedia({ reducedMotion: 'reduce' })` in `tests/portfolio.spec.ts`. Wrapped all CSS animations (`radar-pulse`, `marquee-slide`, `security-flow`, `security-scan`, `security-glow`) in `@media (prefers-reduced-motion: no-preference)` with `html:not([data-motion='off'])`, and enforced `animation: none !important; transition: none !important;` in reduced motion / paused media rules to guarantee zero running animations in `document.getAnimations()`.
+  - *Accessibility / WCAG AA fix*: Resolved axe-core contrast violations by raising `--text-dim` from `#64748b` (3.6:1) to `#94a3b8` (6.8:1), replacing transparent background-clip text with solid high-contrast `#38bdf8` and `#e2e8f0`, and setting `.button-primary` to solid high-contrast `#00d4ff` (14.5:1 ratio). Added detailed JSON violation logging to the axe scan assertions in `tests/portfolio.spec.ts`.
 
 ## Exact next steps and verification limits
 

@@ -163,6 +163,7 @@ test('offers a selected manual-copy field when clipboard access fails', async ({
 })
 
 test('respects reduced motion without hiding content', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.goto('/')
   expect(await page.evaluate(() => getComputedStyle(document.documentElement).scrollBehavior)).toBe(
     'auto',
@@ -222,13 +223,13 @@ test('passes automated WCAG A/AA accessibility checks', async ({ page, isMobile 
   const results = await new AxeBuilder({ page })
     .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'])
     .analyze()
-  expect(results.violations).toEqual([])
+  expect(results.violations, JSON.stringify(results.violations, null, 2)).toEqual([])
   if (isMobile) {
     await page.getByRole('button', { name: 'Open menu' }).click()
     const menuResults = await new AxeBuilder({ page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'])
       .analyze()
-    expect(menuResults.violations).toEqual([])
+    expect(menuResults.violations, JSON.stringify(menuResults.violations, null, 2)).toEqual([])
   }
 })
 
