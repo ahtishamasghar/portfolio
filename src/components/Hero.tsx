@@ -80,7 +80,7 @@ export function Hero() {
         <div className="hero-marquee-track">
           {[0, 1].map((copy) => (
             <span key={copy}>
-              LEARN <i>✳</i> EXPLORE <i>✳</i> BUILD <i>✳</i> STAY CURIOUS <i>✳</i>
+              LEARN <i>/</i> EXPLORE <i>/</i> BUILD <i>/</i> STAY CURIOUS <i>/</i>
             </span>
           ))}
         </div>

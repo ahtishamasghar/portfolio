@@ -1,14 +1,14 @@
 /* Shared palette and rounded surfaces for the current visual theme. */
 :root {
-  --paper: #f6f9f8;
-  --ink: #183746;
-  --muted: #536b73;
-  --subtle: #536b73;
-  --line: #dbe7e3;
-  --accent: #176d70;
-  --blue: #176d70;
+  --paper: #f8f8f6;
+  --ink: #23262d;
+  --muted: #606671;
+  --subtle: #606671;
+  --line: #e1e3e8;
+  --accent: #3459d6;
+  --blue: #3459d6;
   --surface: #ffffff;
-  --surface-tint: #e8f4ef;
+  --surface-tint: #f0f2f7;
   --radius-sm: 12px;
   --radius-md: 20px;
   --radius-lg: 30px;
@@ -19,16 +19,16 @@ body {
   background: var(--paper);
 }
 .site-header {
-  background: #f6f9f8f2;
+  background: #f8f8f6f2;
   border-color: var(--line);
 }
 .monogram {
   border-radius: var(--radius-sm);
-  background: #163c4b;
+  background: #262a33;
   color: #fff;
 }
 .monogram > span {
-  color: #bfe8d8;
+  color: #e0e5ef;
 }
 .desktop-nav {
   background: transparent;
@@ -36,7 +36,7 @@ body {
 }
 .desktop-nav a {
   font-size: 13px;
-  color: #3d565f;
+  color: #535964;
 }
 .desktop-nav a:hover,
 .desktop-nav a[aria-current] {
@@ -46,11 +46,11 @@ body {
   background: var(--accent);
 }
 .header-contact {
-  background: #163c4b;
+  background: #262a33;
   border-radius: var(--radius-sm);
 }
 .header-contact:hover {
-  background: #225d65;
+  background: #3a4150;
 }
 .menu-toggle {
   border-color: var(--line);
@@ -65,15 +65,15 @@ body {
   gap: 36px;
 }
 .hero-eyebrow {
-  color: #285f63;
+  color: #435a94;
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.12em;
   margin-bottom: 26px;
 }
 .live-dot {
-  background: #278672;
-  box-shadow: 0 0 0 5px #e0f0e9;
+  background: #4566d5;
+  box-shadow: 0 0 0 5px #e9edf8;
 }
 h1 {
   max-width: none;
@@ -86,12 +86,12 @@ h1 {
 h1 > .hero-first-name {
   font-size: 0.48em;
   letter-spacing: -0.045em;
-  color: #536b73;
+  color: #606671;
   margin-bottom: 15px;
 }
 .hero-headline {
   font-size: 17px;
-  color: #23666c;
+  color: #46516a;
   font-weight: 650;
   margin-top: 24px;
 }
@@ -109,14 +109,14 @@ h1 > .hero-first-name {
   font-size: 13px;
 }
 .hero-actions .button-primary {
-  background: #163c4b;
-  box-shadow: 0 8px 20px #163c4b12;
+  background: var(--accent);
+  box-shadow: 0 8px 20px #3459d618;
 }
 .hero-actions .button-primary:hover {
-  background: #225d65;
+  background: #2746b5;
 }
 .hero-actions .button-text {
-  color: #234e59;
+  color: #444f67;
 }
 .hero-caption {
   display: none !important;
@@ -125,10 +125,10 @@ h1 > .hero-first-name {
   max-width: none;
   margin: 0;
   padding: 18px;
-  border: 1px solid #234b58;
+  border: 1px solid #dde2eb;
   border-radius: var(--radius-lg);
-  background: radial-gradient(ellipse at 50% 45%, #245a62, #163b4a 52%, #112d3f);
-  box-shadow: 0 24px 60px #123c4618;
+  background: radial-gradient(ellipse at 50% 45%, #ffffff, #f1f3f8 52%, #e9edf5);
+  box-shadow: 0 24px 60px #2637540e;
 }
 .security-stage {
   position: relative;
@@ -137,27 +137,27 @@ h1 > .hero-first-name {
   overflow: hidden;
 }
 .art-label {
-  color: #c5eadd;
+  color: #52607b;
   letter-spacing: 0.16em;
   font-size: 9px;
 }
 .art-controls {
-  border-color: #a3cfc333;
-  color: #d1e9df;
+  border-color: #c9d1e1;
+  color: #58647b;
 }
 .motion-toggle,
 .motion-toggle:disabled {
   border-radius: 30px;
-  background: #ffffff08;
-  border-color: #8dbcb3;
-  color: #e0f4ec;
+  background: #ffffffb3;
+  border-color: #a6b5d1;
+  color: #415174;
 }
 .motion-toggle:hover:not(:disabled) {
-  background: #ffffff16;
-  border-color: #d1f7e7;
+  background: #ffffff;
+  border-color: #5876ba;
 }
 .hero-art-wrapper :focus-visible {
-  outline-color: #c7f8e3;
+  outline-color: #3459d6;
 }
 .hero-foot {
   margin-top: 20px;
@@ -170,7 +170,7 @@ h1 > .hero-first-name {
 }
 .hero-disciplines > span,
 .hero-github {
-  color: #38565f;
+  color: #535c6f;
   font-size: 12px;
 }
 .hero-disciplines svg {
@@ -182,8 +182,8 @@ h1 > .hero-first-name {
 .hero-marquee {
   margin-top: 35px;
   overflow: hidden;
-  background: #e1f0e9;
-  border-block: 1px solid #d1e6dc;
+  background: #eeeff1;
+  border-block: 1px solid #e1e3e8;
 }
 .hero-marquee-track {
   display: flex;
@@ -197,11 +197,11 @@ h1 > .hero-first-name {
   font-size: clamp(13px, 1.4vw, 17px);
   font-weight: 750;
   letter-spacing: 0.1em;
-  color: #28544f;
+  color: #464e5c;
 }
 .hero-marquee-track i {
   font-style: normal;
-  color: #398573;
+  color: #4566d5;
   padding: 0 30px;
 }
 @keyframes marquee-slide {

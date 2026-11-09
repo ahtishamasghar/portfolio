@@ -18,7 +18,7 @@
 @theme {
   --font-sans: 'Manrope Variable', sans-serif;
   --font-mono: 'JetBrains Mono Variable', monospace;
-  --color-lavender: #176d70;
+  --color-lavender: #3459d6;
 }
 
 :root {
@@ -89,9 +89,9 @@ main:focus {
   outline: none;
 }
 ::selection {
-  color: #174d4e;
+  color: #294a9a;
 
-  background: #d0eee0;
+  background: #dfe7fb;
 }
 .container {
   width: min(1240px, calc(100% - 40px));
@@ -1713,7 +1713,7 @@ html[data-motion='off'] *::after {
   right: 0;
   height: 2px;
 
-  background: linear-gradient(90deg, #176d70, #91d8bb);
+  background: linear-gradient(90deg, #3459d6, #9db2ed);
   transform-origin: left;
   z-index: 80;
   pointer-events: none;

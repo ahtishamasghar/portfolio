@@ -1,4 +1,4 @@
-/* Rounded section surfaces share the navy, teal and mint palette from the hero. */
+/* Rounded section surfaces share the graphite, neutral and cobalt palette from the hero. */
 .section-heading h2 {
   color: var(--ink);
   font-size: clamp(2.05rem, 4.3vw, 4rem);
@@ -7,7 +7,7 @@
   line-height: 1.08;
 }
 .muted-title {
-  color: #37797b;
+  color: #667080;
 }
 .section-heading .eyebrow {
   color: var(--accent);
@@ -15,10 +15,10 @@
   letter-spacing: 0.13em;
 }
 .section-heading .eyebrow > span:first-child {
-  color: #547477;
+  color: #647087;
 }
 .eyebrow-line {
-  background: #a7ccc4;
+  background: #bbc5d9;
 }
 .section-description {
   color: var(--muted);
@@ -33,16 +33,16 @@
   color: var(--muted);
 }
 .about-detail {
-  background: #e5f2ec;
-  border-left-color: #378a76;
+  background: #f0f2f6;
+  border-left-color: #4f6bc5;
   border-radius: 0 var(--radius-md) var(--radius-md) 0;
 }
 .about-detail .mono,
 .about-detail div > span:last-child {
-  color: #38685c;
+  color: #53617d;
 }
 .detail-marker {
-  background: #378a76;
+  background: #4f6bc5;
 }
 .principles {
   gap: 16px;
@@ -60,7 +60,7 @@
 .principle > svg,
 .principle:nth-child(2) > svg,
 .principle:nth-child(3) > svg {
-  color: #24796d;
+  color: #4b62a0;
   background: var(--surface-tint);
   border-radius: var(--radius-sm);
 }
@@ -82,7 +82,7 @@
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
-  box-shadow: 0 4px 18px #153d4603;
+  box-shadow: 0 4px 18px #24283203;
   transition:
     background 0.25s ease,
     border-color 0.25s ease,
@@ -94,9 +94,9 @@
 .skill-card:nth-child(3n + 3):hover,
 .skill-card:nth-child(3n + 2)[open],
 .skill-card:nth-child(3n + 3)[open] {
-  background: #edf7f2;
-  border-color: #84bbac;
-  box-shadow: 0 8px 22px #184e4b0a;
+  background: #f3f5fb;
+  border-color: #9daed8;
+  box-shadow: 0 8px 22px #304d900a;
 }
 .skill-card h3 {
   color: var(--ink);
@@ -107,21 +107,21 @@
   color: var(--accent);
 }
 .skill-plus {
-  color: #3d7774;
+  color: #5a6b90;
 }
 .skill-category,
 .skill-description {
-  color: #536c72;
+  color: #606b7e;
 }
 .section-note {
   color: var(--muted);
 }
 .section-note > span {
-  background: #378a76;
+  background: #4f6bc5;
 }
 .column-label,
 .column-label > span {
-  color: #49686e;
+  color: #52617b;
   font-weight: 600;
 }
 .panel {
@@ -129,27 +129,27 @@
   border-radius: var(--radius-md);
 }
 .education-card {
-  background: linear-gradient(145deg, #e0f1e8, #eaf5f1);
-  border: 1px solid #c4dfd3;
+  background: linear-gradient(145deg, #ffffff, #f0f2f5);
+  border: 1px solid #dce1e9;
   border-radius: var(--radius-md);
   box-shadow: none;
 }
 .education-art {
-  color: #2b7e6c;
+  color: #5068a4;
 }
 .education-card h4 {
-  color: #1d4c43;
+  color: #2e3544;
   font-weight: 650;
 }
 .institution,
 .education-footnote {
-  color: #3a685b;
+  color: #5b677e;
 }
 .education-description {
-  color: #46675e;
+  color: #606b7e;
 }
 .education-divider {
-  background: #b8dacc;
+  background: #d4dbe7;
 }
 .certificates {
   gap: 14px;
@@ -167,23 +167,23 @@
 }
 .certificate p,
 .certificate-top .mono {
-  color: #536b73;
+  color: #606671;
 }
 .icon-box {
   color: var(--accent);
   background: var(--surface-tint);
-  border-color: #cce5da;
+  border-color: #dfe5f0;
   border-radius: 10px;
 }
 .status-badge {
-  color: #236457;
-  background: #edf7f0;
-  border-color: #c3dece;
+  color: #3655a3;
+  background: #edf1fb;
+  border-color: #d5def4;
   border-radius: 20px;
   padding-inline: 10px;
 }
 .status-badge > span {
-  background: #378a76;
+  background: #4f6bc5;
 }
 .status-muted {
   color: #785a20;
@@ -194,21 +194,21 @@
   background: #98762d;
 }
 .projects-empty {
-  background: linear-gradient(120deg, #e6f2ef, #edf6f4);
-  border: 1px solid #d3e5df;
+  background: linear-gradient(120deg, #f0f2f6, #f5f6f8);
+  border: 1px solid #dfe3eb;
   border-radius: var(--radius-lg);
   box-shadow: none;
 }
 .project-empty-art > span {
   border-radius: 24px;
-  border-color: #8bbeb2;
-  background: #c8e5db;
+  border-color: #a5b1cf;
+  background: #dce2ee;
 }
 .project-empty-art > span:nth-child(3) {
   border-radius: 24px;
-  background: linear-gradient(145deg, #318c86, #20616e);
-  border-color: #3b8a84;
-  box-shadow: 0 16px 30px #20594f20;
+  background: linear-gradient(145deg, #4865c7, #3551a7);
+  border-color: #5d75bd;
+  box-shadow: 0 16px 30px #344a8a20;
 }
 .project-empty-copy h3 {
   color: var(--ink);
@@ -216,7 +216,7 @@
 }
 .project-empty-copy p,
 .empty-corner {
-  color: #536c72;
+  color: #606b7e;
 }
 .project-card {
   border-radius: var(--radius-md);
@@ -225,39 +225,39 @@
   color: var(--accent);
 }
 .text-link:hover {
-  color: #104c51;
+  color: #2746a5;
 }
 .technology-tags li {
-  color: #3e6964;
+  color: #566582;
   background: var(--surface-tint);
   border-color: var(--line);
   border-radius: 20px;
 }
 .contact-panel {
-  background: linear-gradient(120deg, #153344, #1b5059);
+  background: linear-gradient(120deg, #242832, #313746);
   border-radius: var(--radius-lg);
-  box-shadow: 0 18px 48px #15334412;
+  box-shadow: 0 18px 48px #24283212;
 }
 .contact-glow {
-  background: radial-gradient(ellipse, #92dbc330, transparent 70%);
+  background: radial-gradient(ellipse, #a6b4d21a, transparent 70%);
 }
 .contact-content .gradient-text {
-  color: #bcebd6;
+  color: #d5dce8;
 }
 .contact-content > p:not(.eyebrow),
 .contact-panel .eyebrow,
 .contact-panel .eyebrow > span:first-child {
-  color: #d3e9e3;
+  color: #dce1ec;
 }
 .contact-panel .eyebrow-line {
-  background: #8dc4b5;
+  background: #9daac4;
 }
 .contact-panel .button-primary {
-  background: #c6f2dd;
-  color: #183f3d;
+  background: #ffffff;
+  color: #2e3f6e;
 }
 .contact-panel .button-primary:hover {
-  background: #e0f8eb;
+  background: #edf1fa;
 }
 .copy-button,
 .copy-fallback input {
@@ -265,30 +265,30 @@
 }
 .email-address,
 .social-footnote {
-  color: #d6ece5;
+  color: #dce1ec;
 }
 .social-card {
   border-radius: var(--radius-md);
   background: #ffffff07;
-  border: 1px solid #b1dacc30;
+  border: 1px solid #bfc8dd30;
   padding: 22px;
 }
 .social-card > svg:first-child,
 a.social-card > svg:last-of-type {
-  color: #bfe8d9;
+  color: #d6deed;
 }
 .social-card span > span {
-  color: #d6ece5;
+  color: #dce1ec;
 }
 .placeholder-label {
   border-radius: 8px;
 }
 .footer p,
 .footer p > span {
-  color: #536b73;
+  color: #606671;
 }
 .back-to-top {
-  color: #305c65;
+  color: #455675;
 }
 .back-to-top > span {
   border-color: var(--line);
