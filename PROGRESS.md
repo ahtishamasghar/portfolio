@@ -2,16 +2,16 @@
 
 _Updated for the angular blueprint redesign on 2026-11-09. This document supersedes older visual/deployment notes._
 
-## Current status — angular blueprint redesign validated; deployment pending
+## Current status — angular blueprint redesign deployed and verified
 
 - **Canonical repository:** [ahtishamasghar/portfolio](https://github.com/ahtishamasghar/portfolio)
 - **Production branch:** `main`; the user has requested recent design and animation changes directly on `main`.
 - **GitHub Pages URL:** https://ahtishamasghar.github.io/portfolio/
 - **Deployment method:** GitHub Actions builds the Vite site for the `/portfolio/` base path and deploys the generated `dist/` artifact when the validated `main` branch changes.
-- **Latest verified source commit before this documentation update:** `f60da49` — `Redesign portfolio with editorial layout and visible motion`.
-- **Latest verified deployment:** [GitHub Actions run #42582545726](https://github.com/ahtishamasghar/portfolio/actions/runs/42582545726), **success** for exact source `f60da49`. Validation, Pages artifact build, and Pages deployment all succeeded. The corresponding local Playwright suite reported **30 passed**.
+- **Latest verified source commit before this documentation update:** `73c0a30` — `Replace spinning wheel with angular animated blueprint`.
+- **Latest verified deployment:** [GitHub Actions run #42583750751](https://github.com/ahtishamasghar/portfolio/actions/runs/42583750751), **success** for exact source `73c0a30`. Validation, Pages artifact build, and Pages deployment all succeeded. The corresponding local Playwright suite reported **30 passed**.
 - **Public browser verification:** GitHub confirms successful publication. A separate manual visual check of the live public site across browsers/devices is still recommended; do not equate a successful workflow with independent visual approval.
-- **Current implementation:** warm-paper editorial layout with straight-edged cards and controls, an angular layered blueprint graphic, gliding panels and linear flowing light paths. The spinning wheel, its Canvas renderer, orbit rings, and social-preview torus are removed. This revision passed local checks; publication is pending.
+- **Current implementation:** warm-paper editorial layout with straight-edged cards and controls, an angular layered blueprint graphic, gliding panels and linear flowing light paths. The spinning wheel, its Canvas renderer, orbit rings, and social-preview torus are removed. This revision passed local and GitHub validation and deployed successfully.
 
 ## Resume instructions
 
@@ -157,13 +157,13 @@ The user explicitly requested complete removal of the spinning wheel and a diffe
 - Formatting, lint, type check, and production build passed. **30 desktop/mobile Playwright tests passed**, including axe scans and new tests for blueprint motion, pause/resume, reduced motion, and off-screen pause.
 - Reviewed 320px/390px/768px/1440px local previews. No horizontal overflow or Canvas elements remain.
 - `/portfolio/` project-path build and browser smoke verification passed; default build restored.
-- Pending: commit and push this milestone, verify the exact source commit’s GitHub Actions deployment, and record the run URL.
+- Pushed as `73c0a30`; [GitHub Actions run #42583750751](https://github.com/ahtishamasghar/portfolio/actions/runs/42583750751) successfully validated, built and deployed that exact source commit. No implementation or deployment work remains pending.
 
 ## Exact next steps and verification limits
 
 1. Continue from `main` and this progress log. Read Git history/status, fetch and inspect concurrent changes before editing or pushing; never force-push or restart the project.
-2. Push the angular blueprint revision and check validation and Pages deployment for its exact source commit. Do not describe this revision as deployed before verification.
-3. After successful deployment, record its source commit and run URL in a documentation-only `[skip ci]` commit. Future changes should run the documented checks before push.
+2. The angular blueprint revision is deployed from `73c0a30`. Continue from `main` and this log; preserve completed work.
+3. This documentation-only verification commit uses `[skip ci]` to avoid redeploying unchanged site files. Future changes should run the documented checks before push.
 4. `api.github.com` and the live Pages domain are denied by the current cloud network policy. Git and GitHub web pages work. Verify Actions via its web run; independent live-site visual inspection remains unavailable. Local desktop/tablet/mobile screenshots have been inspected.
 5. A temporary stash named “Professional redesign draft before syncing latest main” preserves an earlier draft. It is already integrated; do not reapply it. The old feature branch is historical.
 6. Use `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium` for local browser checks and `scripts/verify-project-path.mjs`; CI installs the matching browser itself.
