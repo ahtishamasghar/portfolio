@@ -1,6 +1,6 @@
 # Portfolio implementation progress
 
-_Last updated: 2026-11-09 (Asia/Karachi). This document supersedes the original Codex Cloud milestones and the outdated deployment notes._
+_Updated after successful deployment of source commit `136a351`. This document supersedes the original Codex Cloud milestones and older visual/deployment notes._
 
 ## Current status — professional redesign, deployment verified
 
@@ -8,10 +8,10 @@ _Last updated: 2026-11-09 (Asia/Karachi). This document supersedes the original 
 - **Production branch:** `main`; the user has requested recent design and animation changes directly on `main`.
 - **GitHub Pages URL:** https://ahtishamasghar.github.io/portfolio/
 - **Deployment method:** GitHub Actions builds the Vite site for the `/portfolio/` base path and deploys the generated `dist/` artifact when the validated `main` branch changes.
-- **Latest verified source commit before this documentation update:** `35ad742` — `Redesign portfolio with professional layout and controllable motion`.
-- **Latest verified deployment:** [GitHub Actions run #42546375876](https://github.com/ahtishamasghar/portfolio/actions/runs/42546375876), **success**. Validation, Pages artifact build, and Pages deployment all succeeded. The local corresponding Playwright suite reported **30 passed**.
+- **Latest verified source commit before this documentation update:** `136a351` — `Polish portfolio presentation and update social identity`.
+- **Latest verified deployment:** [GitHub Actions run #42546703653](https://github.com/ahtishamasghar/portfolio/actions/runs/42546703653), **success**. Validation, Pages artifact build, and Pages deployment all succeeded. The local corresponding Playwright suite reported **30 passed**.
 - **Public browser verification:** GitHub confirms successful publication. A separate manual visual check of the live public site across browsers/devices is still recommended; do not equate a successful workflow with independent visual approval.
-- **Current implementation:** professional dark editorial redesign with a procedural wire sculpture, larger typography, cobalt accents, a single consolidated stylesheet, and controllable animation. The earlier ATELIER design is historical. The first redesign checkpoint deployed successfully in the run above. The final copy/social-image refinement is a subsequent checkpoint and must be verified separately.
+- **Current implementation:** professional dark editorial redesign with a procedural wire sculpture, larger typography, cobalt accents, a single consolidated stylesheet, and controllable animation. The earlier ATELIER design is historical. The final copy, social image, and favicon are included in the verified deployment above.
 
 ## Resume instructions
 
@@ -114,7 +114,7 @@ Completed:
 
 ## Exact next steps and verification limits
 
-1. Inspect the Actions run for the final polish commit following `35ad742`. Record the exact result; do not infer success from the prior deployment. Code and assets are locally verified and ready.
+1. Implementation is complete. Final source commit `136a351` passed GitHub Actions and deployed successfully in run [42546703653](https://github.com/ahtishamasghar/portfolio/actions/runs/42546703653). The exact commit and successful conclusion were checked on the run page. This follow-up documentation-only commit uses `[skip ci]` to avoid redeploying unchanged site files.
 2. Continue from `main` and this progress log. Fetch and inspect concurrent changes before editing or pushing; never force-push or restart the project.
 3. `api.github.com` and the live Pages domain are denied by the current cloud network policy. Git and GitHub web pages work. Verify Actions via its web run; independent live-site visual inspection must wait until the Pages domain is allowed. Local desktop/tablet/mobile screenshots have been inspected.
 4. A temporary stash named “Professional redesign draft before syncing latest main” preserves the initial draft. It is already integrated; do not reapply it. The old feature branch is historical.
@@ -122,4 +122,4 @@ Completed:
 6. Real Safari/Firefox, screen readers, and hands-on device testing remain outside the executed Chromium/axe checks.
 7. Never invent credentials, employment, completed projects, certification achievements, or LinkedIn links.
 
-All requested design and animation implementation is complete. The final polish deployment verification is the only pending task for this milestone.
+All requested design and animation implementation is complete and pushed. Final GitHub Pages deployment is verified. Independent visual inspection of the public URL remains limited by network policy; local responsive screenshots and automated browser behavior are verified.
