@@ -327,3 +327,33 @@ test('mobile layout keeps navigation compact and expanded skills at natural heig
   expect(next!.y).toBeGreaterThanOrEqual(expanded!.y + expanded!.height)
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
 })
+
+test('supports dual themes (dark and light) with accessibility compliance in both modes', async ({
+  page,
+}) => {
+  await page.goto('/')
+  const html = page.locator('html')
+  await expect(html).toHaveAttribute('data-theme', /dark|light/)
+
+  const toggle = page.getByRole('button', { name: /switch to/i }).first()
+  await expect(toggle).toBeVisible()
+
+  // Switch to light theme
+  const initialTheme = await html.getAttribute('data-theme')
+  await toggle.click()
+  const switchedTheme = await html.getAttribute('data-theme')
+  expect(switchedTheme).not.toBe(initialTheme)
+
+  // Verify WCAG accessibility in light mode
+  for (const section of await page.locator('main > section').all()) {
+    await section.scrollIntoViewIfNeeded()
+  }
+  const lightAxe = await new AxeBuilder({ page })
+    .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'])
+    .analyze()
+  expect(lightAxe.violations, JSON.stringify(lightAxe.violations, null, 2)).toEqual([])
+
+  // Switch back to dark theme
+  await toggle.click()
+  await expect(html).toHaveAttribute('data-theme', initialTheme || 'dark')
+})

@@ -1,10 +1,22 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#080c14" />
     <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" />
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('portfolio-theme');
+          var preference = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+          var theme = (saved === 'light' || saved === 'dark') ? saved : preference;
+          document.documentElement.setAttribute('data-theme', theme);
+          var meta = document.querySelector('meta[name="theme-color"]');
+          if (meta) meta.setAttribute('content', theme === 'light' ? '#f8fafc' : '#080c14');
+        } catch (e) {}
+      })();
+    </script>
     <!-- SEO and social metadata come from src/content/portfolio.ts. -->
   </head>
   <body>

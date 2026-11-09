@@ -202,6 +202,16 @@ The user requested a complete redesign into a premium, modern, and highly profes
   - *Reduced-motion fix*: Added explicit `await page.emulateMedia({ reducedMotion: 'reduce' })` in `tests/portfolio.spec.ts`. Wrapped all CSS animations (`radar-pulse`, `marquee-slide`, `security-flow`, `security-scan`, `security-glow`) in `@media (prefers-reduced-motion: no-preference)` with `html:not([data-motion='off'])`, and enforced `animation: none !important; transition: none !important;` in reduced motion / paused media rules to guarantee zero running animations in `document.getAnimations()`.
   - *Accessibility / WCAG AA fix*: Resolved axe-core contrast violations by raising `--text-dim` from `#64748b` (3.6:1) to `#94a3b8` (6.8:1), replacing transparent background-clip text with solid high-contrast `#38bdf8` and `#e2e8f0`, and setting `.button-primary` to solid high-contrast `#00d4ff` (14.5:1 ratio). Added detailed JSON violation logging to the axe scan assertions in `tests/portfolio.spec.ts`.
 
+## Milestone 14 — Dual Theme Architecture (Obsidian Dark & Titanium Light)
+
+The user requested a dual-theme approach combining the high-tech Obsidian Cyber-Defense theme with a crisp, architectural light theme.
+
+- **Dual Theme Engine:** Implemented `src/theme/ThemeContext.tsx` with zero-flicker pre-paint script in `index.html`, OS `prefers-color-scheme` synchronization, and `localStorage` persistence.
+- **Theme Switcher Component:** Added `src/components/ThemeToggle.tsx` with accessible Sun/Moon icon toggle in the desktop header and mobile drawer.
+- **Titanium & Royal Cobalt Light Theme:** Crisp chalk/titanium surfaces (`#f8fafc`), deep midnight slate typography (`#0f172a`, `#334155`), royal cobalt primary accents (`#2563eb`), and clean frosted glass cards.
+- **Adaptive Security Linework:** Security SVG paths, nodes, and flow lines dynamically adjust their stroke and fill colors to match the active theme.
+- **Automated Verification:** Added Playwright test in `tests/portfolio.spec.ts` testing theme toggling and running axe-core accessibility scans across both themes.
+
 ## Exact next steps and verification limits
 
 1. Continue from `main` and this progress log. Read Git history/status, fetch and inspect concurrent changes before editing or pushing; never force-push or restart the project.

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { ArrowUpRight, Menu, X } from 'lucide-react'
 import { navigation, portfolio } from '../content/portfolio'
+import { ThemeToggle } from './ThemeToggle'
 
 export function Header() {
   const [open, setOpen] = useState(false)
@@ -80,19 +81,22 @@ export function Header() {
             </a>
           ))}
         </nav>
-        <a className="header-contact" href="#contact">
-          Get in touch <ArrowUpRight size={15} aria-hidden="true" />
-        </a>
-        <button
-          ref={toggleRef}
-          className="menu-toggle"
-          aria-expanded={open}
-          aria-controls="mobile-navigation"
-          aria-label={open ? 'Close menu' : 'Open menu'}
-          onClick={() => setOpen(!open)}
-        >
-          {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
-        </button>
+        <div className="header-actions">
+          <ThemeToggle />
+          <a className="header-contact" href="#contact">
+            Get in touch <ArrowUpRight size={15} aria-hidden="true" />
+          </a>
+          <button
+            ref={toggleRef}
+            className="menu-toggle"
+            aria-expanded={open}
+            aria-controls="mobile-navigation"
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            onClick={() => setOpen(!open)}
+          >
+            {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+          </button>
+        </div>
       </div>
       <nav
         id="mobile-navigation"
@@ -111,6 +115,10 @@ export function Header() {
             <ArrowUpRight size={17} aria-hidden="true" />
           </a>
         ))}
+        <div className="mobile-nav-theme">
+          <span>THEME MODE</span>
+          <ThemeToggle />
+        </div>
       </nav>
     </header>
   )

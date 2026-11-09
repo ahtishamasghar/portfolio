@@ -9,28 +9,31 @@ import { ScrollProgress } from './components/MotionEffects'
 import { Projects } from './components/Projects'
 import { Skills } from './components/Skills'
 import { MotionProvider } from './motion/MotionProvider'
+import { ThemeProvider } from './theme/ThemeContext'
 import { useInitialAnchor } from './useInitialAnchor'
 
 export default function App() {
   useInitialAnchor()
   return (
-    <LazyMotion features={domAnimation} strict>
-      <MotionProvider>
-        <a className="skip-link" href="#main">
-          Skip to main content
-        </a>
-        <ScrollProgress />
-        <Header />
-        <main id="main" tabIndex={-1}>
-          <Hero />
-          <About />
-          <Skills />
-          <Learning />
-          <Projects />
-          <Contact />
-        </main>
-        <Footer />
-      </MotionProvider>
-    </LazyMotion>
+    <ThemeProvider>
+      <LazyMotion features={domAnimation} strict>
+        <MotionProvider>
+          <a className="skip-link" href="#main">
+            Skip to main content
+          </a>
+          <ScrollProgress />
+          <Header />
+          <main id="main" tabIndex={-1}>
+            <Hero />
+            <About />
+            <Skills />
+            <Learning />
+            <Projects />
+            <Contact />
+          </main>
+          <Footer />
+        </MotionProvider>
+      </LazyMotion>
+    </ThemeProvider>
   )
 }
