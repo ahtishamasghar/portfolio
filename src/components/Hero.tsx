@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowUpRight, Code2, Globe2, Shield } from 'lucide-react'
+import { ArrowDown, ArrowUpRight, Code2, Globe2, Shield, GraduationCap } from 'lucide-react'
 import { portfolio } from '../content/portfolio'
 import { Github } from './BrandIcons'
 import { ExternalLink } from './Primitives'
@@ -13,7 +13,8 @@ export function Hero() {
       <div className="container hero-layout">
         <Reveal className="hero-content">
           <p className="hero-eyebrow">
-            <span className="live-dot" />A MINDSET OF CONTINUOUS LEARNING
+            <span className="live-dot" />
+            CYBERSECURITY. CODE. CURIOSITY.
           </p>
           <h1 id="hero-title">
             <span className="hero-first-name">{portfolio.firstName}</span>{' '}
@@ -46,12 +47,15 @@ export function Hero() {
             <div className="sculpture-halo" aria-hidden="true" />
             <SignalSculpture />
             <span className="art-label art-label-top" aria-hidden="true">
-              THE SHAPE OF CURIOSITY
+              A CURIOUS MIND IN MOTION
             </span>
-            <span className="art-label art-label-bottom" aria-hidden="true">
-              <span />
-              CONNECTED THINKING / 001
-            </span>
+            <div className="hero-board-tag">
+              <GraduationCap size={25} aria-hidden="true" />
+              <span>
+                <strong>Learning. Exploring. Building.</strong>
+                <small>BS Cybersecurity · In progress</small>
+              </span>
+            </div>
           </div>
           <div className="art-controls">
             <span>Explore. Understand. Build.</span>

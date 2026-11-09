@@ -1,8 +1,8 @@
 # Portfolio implementation progress
 
-_Updated after successful deployment of source commit `136a351`. This document supersedes the original Codex Cloud milestones and older visual/deployment notes._
+_Updated for the light redesign on 2026-11-09. This document supersedes older visual/deployment notes._
 
-## Current status — professional redesign, deployment verified
+## Current status — light redesign validated locally; deployment pending
 
 - **Canonical repository:** [ahtishamasghar/portfolio](https://github.com/ahtishamasghar/portfolio)
 - **Production branch:** `main`; the user has requested recent design and animation changes directly on `main`.
@@ -11,7 +11,7 @@ _Updated after successful deployment of source commit `136a351`. This document s
 - **Latest verified source commit before this documentation update:** `136a351` — `Polish portfolio presentation and update social identity`.
 - **Latest verified deployment:** [GitHub Actions run #42546703653](https://github.com/ahtishamasghar/portfolio/actions/runs/42546703653), **success**. Validation, Pages artifact build, and Pages deployment all succeeded. The local corresponding Playwright suite reported **30 passed**.
 - **Public browser verification:** GitHub confirms successful publication. A separate manual visual check of the live public site across browsers/devices is still recommended; do not equate a successful workflow with independent visual approval.
-- **Current implementation:** professional dark editorial redesign with a procedural wire sculpture, larger typography, cobalt accents, a single consolidated stylesheet, and controllable animation. The earlier ATELIER design is historical. The final copy, social image, and favicon are included in the verified deployment above.
+- **Current implementation:** light ivory/navy design with cobalt accents, pastel cards, a blue/lavender animated hero, a cobalt contact panel, and updated social image/favicon. The nearly-black design in the last deployment is historical; this light revision is validated locally and awaiting push/deployment verification.
 
 ## Resume instructions
 
@@ -112,14 +112,35 @@ Completed:
 - Formatting, lint, type check, production build, and **30 desktop/mobile Playwright tests passed** after these changes; accessibility scans report zero violations.
 - The previous redesign checkpoint (`35ad742`) is independently confirmed successful by the GitHub Actions web page: run `42546375876`, including Pages deployment.
 
+## Milestone 8 — light visual redesign
+
+The user rejected the nearly-black theme and requested a professional modern appearance. This update continues the existing implementation and preserves truthful content, navigation, and accessibility.
+
+Completed:
+
+- Replaced charcoal backgrounds with ivory surfaces, navy typography, cobalt accents, and lavender/mint/cream cards.
+- Reworked the hero into a clear split layout with a rounded blue/lavender sculpture panel and an accurate education callout. Updated canvas colours for the lighter background.
+- Added a pill navigation treatment, clear buttons/focus outlines, a desktop bento skill grid, distinct education/project panels, and a cobalt contact section.
+- Preserved entrance animation, pointer response, scroll progress, global pause/resume, reduced-motion support, and off-screen animation suspension.
+- Updated the favicon, browser theme colour, 1200×630 social image, and README design description.
+- Corrected small-label contrast and mobile label overlap during visual/accessibility review.
+- Updated the reveal test to scroll the actual heading container into view; centring a tall mobile section can leave its heading outside the viewport.
+- Formatting, linting, type checking, production build, and **30 desktop/mobile Playwright tests passed**. Desktop/mobile axe scans report zero violations.
+- Visually reviewed desktop, tablet, and mobile screenshots; checked the floating hero card fits at 320px, 768px, and 1440px.
+- Verified the `/portfolio/` production build and browser smoke check; restored the default build afterward.
+
+Pending:
+
+- Commit and push this validated milestone to `main`.
+- Verify GitHub Actions validation and Pages deployment for the exact new source commit, then record its run URL and outcome here.
+
 ## Exact next steps and verification limits
 
-1. Implementation is complete. Final source commit `136a351` passed GitHub Actions and deployed successfully in run [42546703653](https://github.com/ahtishamasghar/portfolio/actions/runs/42546703653). The exact commit and successful conclusion were checked on the run page. This follow-up documentation-only commit uses `[skip ci]` to avoid redeploying unchanged site files.
-2. Continue from `main` and this progress log. Fetch and inspect concurrent changes before editing or pushing; never force-push or restart the project.
-3. `api.github.com` and the live Pages domain are denied by the current cloud network policy. Git and GitHub web pages work. Verify Actions via its web run; independent live-site visual inspection must wait until the Pages domain is allowed. Local desktop/tablet/mobile screenshots have been inspected.
-4. A temporary stash named “Professional redesign draft before syncing latest main” preserves the initial draft. It is already integrated; do not reapply it. The old feature branch is historical.
-5. Use `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium` for local browser checks and `scripts/verify-project-path.mjs`; CI installs the matching browser itself.
-6. Real Safari/Firefox, screen readers, and hands-on device testing remain outside the executed Chromium/axe checks.
-7. Never invent credentials, employment, completed projects, certification achievements, or LinkedIn links.
-
-All requested design and animation implementation is complete and pushed. Final GitHub Pages deployment is verified. Independent visual inspection of the public URL remains limited by network policy; local responsive screenshots and automated browser behavior are verified.
+1. Continue from `main` and this progress log. Read Git history/status, fetch and inspect concurrent changes before editing or pushing; never force-push or restart the project.
+2. Push the completed light-design milestone, inspect its GitHub Actions run, and fix any failed jobs. Do not describe this release as deployed until its exact source commit has a successful deployment result.
+3. After successful publication, update this document with the source commit and run URL. Use `[skip ci]` for the documentation-only verification commit.
+4. `api.github.com` and the live Pages domain are denied by the current cloud network policy. Git and GitHub web pages work. Verify Actions via its web run; independent live-site visual inspection remains unavailable. Local desktop/tablet/mobile screenshots have been inspected.
+5. A temporary stash named “Professional redesign draft before syncing latest main” preserves an earlier draft. It is already integrated; do not reapply it. The old feature branch is historical.
+6. Use `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium` for local browser checks and `scripts/verify-project-path.mjs`; CI installs the matching browser itself.
+7. Real Safari/Firefox, screen readers, and hands-on device testing remain outside the executed Chromium/axe checks. No known functional issues remain in the executed checks.
+8. Never invent credentials, employment, completed projects, certification achievements, or LinkedIn links.

@@ -236,13 +236,13 @@ test('reveals sections with normal motion enabled', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'no-preference' })
   await page.goto('/')
   for (const section of await page.locator('main > section').all()) {
-    await section.scrollIntoViewIfNeeded()
-    await expect(
-      section
-        .locator(':scope > div')
-        .filter({ has: page.getByRole('heading') })
-        .first(),
-    ).toHaveCSS('opacity', '1')
+    const headingContainer = section
+      .locator(':scope > div')
+      .filter({ has: page.getByRole('heading') })
+      .first()
+    // Tall mobile sections can center with their heading outside the viewport.
+    await headingContainer.scrollIntoViewIfNeeded()
+    await expect(headingContainer).toHaveCSS('opacity', '1')
   }
 })
 

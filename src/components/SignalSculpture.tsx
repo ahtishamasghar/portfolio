@@ -45,10 +45,10 @@ export function SignalSculpture() {
         }
       }
       const gradient = context.createLinearGradient(width * 0.15, 0, width * 0.9, height)
-      gradient.addColorStop(0, '#c2caff')
-      gradient.addColorStop(0.35, '#899eff')
-      gradient.addColorStop(0.7, '#5476f5')
-      gradient.addColorStop(1, '#9a79ee')
+      gradient.addColorStop(0, '#597de0')
+      gradient.addColorStop(0.35, '#4564ce')
+      gradient.addColorStop(0.7, '#2e51bd')
+      gradient.addColorStop(1, '#9272da')
       context.strokeStyle = gradient
       context.lineWidth = 0.7
       for (let ring = 0; ring < 38; ring++) {
@@ -77,7 +77,7 @@ export function SignalSculpture() {
       for (let index = 0; index < 8; index++) {
         const p = point(index * 0.78 + time * 0.075, index * 1.93)
         context.globalAlpha = 0.55 + (p.z + 1.8) / 9
-        context.fillStyle = '#d5dcff'
+        context.fillStyle = '#2c4bbb'
         context.beginPath()
         context.arc(p.x, p.y, 1.5, 0, tau)
         context.fill()
