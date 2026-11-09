@@ -1,6 +1,6 @@
 # Muhammad Ahtisham Asghar — Personal Portfolio
 
-A complete, light-first portfolio for a **Cybersecurity & Technology Enthusiast**, built with React, TypeScript, Vite, Tailwind CSS, Motion for React, and Lucide React. The design uses warm white surfaces, graphite typography, restrained cobalt accents, rounded cards, and an animated shield-and-network illustration. No backend, API keys, analytics, or paid services are required.
+A complete, premium, modern, and highly professional portfolio for a **Cybersecurity & Technology Enthusiast**, built with React, TypeScript, Vite, Tailwind CSS, Motion for React, and Lucide React. The design features a sophisticated deep obsidian cyber-defense theme with electric cyan, azure, and live emerald telemetry accents, refined glassmorphic cards, polished typography, and an animated shield-and-network security visual. No backend, API keys, analytics, or paid services are required.
 
 The content accurately represents an ongoing BS in Cybersecurity at the University of Sargodha. Learning areas are not presented as professional proficiency. Google certification is in progress; Cisco completion remains unconfirmed. The projects collection is intentionally empty, and LinkedIn is an explicit, non-clickable placeholder.
 
@@ -103,7 +103,7 @@ Section titles and visual labels live in their respective `src/components` files
 
 ### Motion and visual styling
 
-The base theme is in `src/styles.css`, with the current editorial styling in `src/hero-refresh.css` and `src/sections-refresh.css`. `SecurityVisual.tsx` uses the local `src/assets/security-network.svg` artwork with flowing network paths, a gentle shield scan, and a lock symbol. The hero uses SVG and CSS animation without Canvas, WebGL, or additional runtime dependencies. The rounded illustration is decorative and does not display or claim real security monitoring. It pauses off-screen and in hidden tabs.
+The design system is unified in `src/styles.css` using an Obsidian Cyber-Defense visual identity with electric cyan and azure telemetry accents. `SecurityVisual.tsx` uses the local `src/assets/security-network.svg` artwork with flowing network paths, a gentle shield scan, and a lock symbol. The hero uses SVG and CSS animation without Canvas, WebGL, or additional runtime dependencies. The illustration is decorative and does not display or claim real security monitoring. It pauses off-screen and in hidden tabs.
 
 The visible **Motion on / Motion paused** control stops decorative animation and disables entrance transitions and smooth scrolling. System reduced-motion preferences take priority. The graphic is decorative and does not carry essential content. `MotionProvider` supplies the shared preference to the security graphic, reveal effects, and scroll progress.
 

@@ -8,7 +8,7 @@ export function ProjectCard({ project }: { project: Project }) {
   return (
     <article className="panel project-card">
       <div className="flex items-center justify-between gap-3">
-        <FolderCode className="text-lavender" size={24} aria-hidden="true" />
+        <FolderCode style={{ color: 'var(--cyan-core)' }} size={24} aria-hidden="true" />
         <StatusBadge>{project.status}</StatusBadge>
       </div>
       <h3>{project.title}</h3>
@@ -69,7 +69,7 @@ export function Projects() {
               <span />
               <span />
               <span />
-              <Layers3 strokeWidth={1} />
+              <Layers3 strokeWidth={1.2} />
             </div>
             <div className="project-empty-copy">
               <StatusBadge>In the making</StatusBadge>

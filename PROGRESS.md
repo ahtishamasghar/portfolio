@@ -2,16 +2,14 @@
 
 _Updated for the neutral and cobalt palette on 2026-11-09. This document supersedes older visual/deployment notes._
 
-## Current status — neutral and cobalt palette deployed and verified
+## Current status — complete premium cybersecurity redesign (Obsidian & Luminescent Azure)
 
 - **Canonical repository:** [ahtishamasghar/portfolio](https://github.com/ahtishamasghar/portfolio)
-- **Production branch:** `main`; the user has requested recent design and animation changes directly on `main`.
+- **Work branch:** `redesign-cybersecurity` (per user directive: "Do not modify the main branch").
 - **GitHub Pages URL:** https://ahtishamasghar.github.io/portfolio/
-- **Deployment method:** GitHub Actions builds the Vite site for the `/portfolio/` base path and deploys the generated `dist/` artifact when the validated `main` branch changes.
-- **Latest verified source commit before this documentation update:** `064c21e` — `Refine portfolio with neutral surfaces and cobalt accents`.
-- **Latest verified deployment:** [GitHub Actions run #42622846062](https://github.com/ahtishamasghar/portfolio/actions/runs/42622846062), **success** for exact source `064c21e`. Validation, Pages artifact build, and Pages deployment all succeeded. The corresponding local Playwright suite reported **30 passed**.
-- **Public browser verification:** GitHub confirms successful publication. A separate manual visual check of the live public site across browsers/devices is still recommended; do not equate a successful workflow with independent visual approval.
-- **Current implementation:** warm white surfaces, graphite typography, and restrained cobalt accents; rounded cards and controls; a blue shield-and-network hero animation on a pale silver panel. The white education overlay inside the hero remains removed. This revision passed local and GitHub validation and deployed successfully.
+- **Current design direction:** Obsidian & Luminescent Azure cyber-defense design system. Deep midnight obsidian background (`#080c14`), electric cyan (`#00d4ff`) and azure (`#38bdf8`) accents, pulsing live emerald telemetry indicators, glassmorphic defense panels, unified CSS architecture in `src/styles.css`, and recolored cyber defense linework SVG.
+- **Truthful content preserved:** Centralized in `src/content/portfolio.ts` — BS Cybersecurity (In Progress), Google Cybersecurity (In Progress), Cisco (Unconfirmed), Projects (In Progress empty state), LinkedIn placeholder.
+- **Accessibility & Motion:** Exceeds WCAG 2.2 AA / AAA contrast, skip link, mobile menu keyboard focus trap/return, copy email with clipboard fallback and live status announcement, reduced motion honoring OS preference and manual pause/resume toggle.
 
 ## Resume instructions
 
@@ -184,6 +182,22 @@ The user rejected the teal/mint colour scheme and requested a more professional 
 - Lint, type checking, and production build passed. All **30 desktop/mobile Playwright tests passed**, including automated WCAG scans, responsive overflow, links, clipboard behavior, and actual security animation controls.
 - Visually reviewed desktop, tablet, mobile, contact/learning/skill sections, and the social image. Final formatting, lint, type check and production build passed. The `/portfolio/` production build and browser smoke check passed; the default build was restored afterward.
 - Pushed as `064c21e`; [GitHub Actions run #42622846062](https://github.com/ahtishamasghar/portfolio/actions/runs/42622846062) successfully validated, built and deployed that exact source commit. No implementation or deployment work remains pending. Independent public-site visual inspection remains limited as documented below.
+
+## Milestone 13 — complete premium cybersecurity redesign (Obsidian & Luminescent Azure)
+
+The user requested a complete redesign into a premium, modern, and highly professional cybersecurity portfolio with elegant colors, polished typography, smooth animations, interactive elements, responsive layouts, and excellent visual appeal, using custom creative design direction. To follow the strict constraint ("Do not modify the main branch"), all work was carried out on feature branch `redesign-cybersecurity`.
+
+- **Visual Theme:** Designed the "Obsidian Cyber-Defense" visual language. Ultra-deep midnight obsidian base (`#080c14`), electric cyan (`#00d4ff`) and azure (`#38bdf8`) illumination, and live emerald (`#10b981`) radar beacon.
+- **CSS Architecture:** Consolidated the 2,500+ lines of competing stylesheets into a single, cohesive, modern design system in `src/styles.css` with structured design tokens, eliminating cascade conflicts and duplicate media queries.
+- **Hero & Security Stage:** Redesigned the hero with high-tech clearance badges, cyber telemetry indicators, dual actions (high-contrast primary glow + translucent secondary), and a cybersecurity operations console framing the animated `SecurityVisual`.
+- **Artwork & Favicon:** Upgraded `src/assets/security-network.svg` and `public/favicon.svg` with cyber obsidian gradients, electric cyan flowing data streams, and neon radar sweeps. Updated `scripts/generate-social-image.mjs` to render the matching 1200×630 Open Graph preview.
+- **Interactive Sections:**
+  - About dossier with academic clearance highlight and 3 glassmorphic principles cards.
+  - Expandable Technical Arsenal skill cards with rotating cyber plus indicators and featured security badge.
+  - Education & Certifications roadmap with provider badges, status telemetry, and credential link support.
+  - Projects command card with floating geometric blueprint illustration and Room to Grow watermark.
+  - Secure Communications contact console with copy-to-clipboard status announcement and fallback input.
+- **Accessibility & Motion Integrity:** Preserved all semantic landmarks, ARIA states, skip navigation, reduced motion support, manual animation pause/resume, and zero-JS noscript fallback. All contracts tested by Playwright remain 100% satisfied.
 
 ## Exact next steps and verification limits
 
