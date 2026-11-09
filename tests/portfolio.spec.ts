@@ -258,20 +258,42 @@ test('provides useful contact information without JavaScript', async ({ browser 
   await context.close()
 })
 
-test('kinetic effects remain decorative and respect reduced-motion preferences', async ({ page }) => {
+test('decorative animation respects the device reduced-motion preference', async ({ page }) => {
   await page.goto('/')
-  await expect(page.locator('.motion-ticker')).toHaveAttribute('aria-hidden', 'true')
+  await expect(page.locator('.signal-sculpture')).toHaveAttribute('aria-hidden', 'true')
   await expect(page.locator('.scroll-progress')).toHaveAttribute('aria-hidden', 'true')
-  await expect(page.locator('.art-spark')).toHaveCount(8)
-  await page.emulateMedia({ reducedMotion: 'reduce' })
-  expect(
-    await page.locator('.motion-ticker-track').evaluate((element) =>
-      getComputedStyle(element).animationName,
-    ),
-  ).toBe('none')
+  await expect(
+    page.getByRole('button', { name: 'Reduced motion enabled by your device' }),
+  ).toBeDisabled()
+  const canvas = page.locator('.signal-sculpture')
+  const before = await canvas.evaluate((element: HTMLCanvasElement) => element.toDataURL())
+  await page.waitForTimeout(150)
+  expect(await canvas.evaluate((element: HTMLCanvasElement) => element.toDataURL())).toBe(before)
 })
 
-test('mobile layout keeps navigation compact and expanded skills at natural height', async ({ page }) => {
+test('visitors can pause and resume the animated sculpture', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'no-preference' })
+  await page.goto('/')
+  const canvas = page.locator('.signal-sculpture')
+  await canvas.scrollIntoViewIfNeeded()
+  const before = await canvas.evaluate((element: HTMLCanvasElement) => element.toDataURL())
+  await expect
+    .poll(() => canvas.evaluate((element: HTMLCanvasElement) => element.toDataURL()))
+    .not.toBe(before)
+  await page.getByRole('button', { name: 'Pause animations' }).click()
+  await expect(page.locator('html')).toHaveAttribute('data-motion', 'off')
+  const paused = await canvas.evaluate((element: HTMLCanvasElement) => element.toDataURL())
+  await page.waitForTimeout(180)
+  expect(await canvas.evaluate((element: HTMLCanvasElement) => element.toDataURL())).toBe(paused)
+  await page.getByRole('button', { name: 'Resume animations' }).click()
+  await expect
+    .poll(() => canvas.evaluate((element: HTMLCanvasElement) => element.toDataURL()))
+    .not.toBe(paused)
+})
+
+test('mobile layout keeps navigation compact and expanded skills at natural height', async ({
+  page,
+}) => {
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto('/#skills')
   const header = await page.locator('.header-inner').boundingBox()

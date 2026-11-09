@@ -7,7 +7,15 @@ const origin = 'http://127.0.0.1:4174'
 const base = `${origin}/portfolio/`
 const server = spawn(
   process.execPath,
-  ['node_modules/vite/bin/vite.js', 'preview', '--host', '127.0.0.1', '--port', '4174', '--strictPort'],
+  [
+    'node_modules/vite/bin/vite.js',
+    'preview',
+    '--host',
+    '127.0.0.1',
+    '--port',
+    '4174',
+    '--strictPort',
+  ],
   {
     env: { ...process.env, VITE_BASE_PATH: '/portfolio/', VITE_SITE_URL: site },
     stdio: 'inherit',
@@ -32,7 +40,9 @@ try {
   }
   assert.ok(ready, 'The /portfolio/ preview endpoint never became ready')
 
-  browser = await chromium.launch()
+  browser = await chromium.launch({
+    executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH || undefined,
+  })
   const page = await browser.newPage({ viewport: { width: 1280, height: 800 } })
   const errors = []
   page.on('pageerror', (error) => errors.push(error.message))
@@ -44,15 +54,29 @@ try {
 
   const response = await page.goto(base, { waitUntil: 'networkidle' })
   assert.equal(response?.status(), 200)
-  assert.equal((await page.locator('h1').innerText()).replace(/\s+/g, ' ').trim(), 'Muhammad Ahtisham Asghar')
-  assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'), `${site}/`)
-  assert.equal(await page.locator('meta[property="og:image"]').getAttribute('content'), `${site}/og-image.png`)
-
-  const assets = await page.locator('script[src], link[rel="stylesheet"][href], link[rel="icon"][href]').evaluateAll(
-    (nodes) => nodes.map((node) => node.getAttribute('src') || node.getAttribute('href')),
+  assert.equal(
+    (await page.locator('h1').innerText()).replace(/\s+/g, ' ').trim(),
+    'Muhammad Ahtisham Asghar',
   )
-  assert.ok(assets.some((value) => value?.startsWith('/portfolio/assets/')), 'Missing base-prefixed bundle')
-  assert.ok(assets.every((value) => value?.startsWith('/portfolio/')), 'Root-relative asset escapes /portfolio/')
+  assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'), `${site}/`)
+  assert.equal(
+    await page.locator('meta[property="og:image"]').getAttribute('content'),
+    `${site}/og-image.png`,
+  )
+
+  const assets = await page
+    .locator('script[src], link[rel="stylesheet"][href], link[rel="icon"][href]')
+    .evaluateAll((nodes) =>
+      nodes.map((node) => node.getAttribute('src') || node.getAttribute('href')),
+    )
+  assert.ok(
+    assets.some((value) => value?.startsWith('/portfolio/assets/')),
+    'Missing base-prefixed bundle',
+  )
+  assert.ok(
+    assets.every((value) => value?.startsWith('/portfolio/')),
+    'Root-relative asset escapes /portfolio/',
+  )
 
   for (const resource of ['favicon.svg', 'og-image.png', 'robots.txt', 'sitemap.xml']) {
     const result = await page.request.get(`${base}${resource}`)

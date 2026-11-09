@@ -38,7 +38,7 @@ export const portfolio = {
   hero: {
     eyebrow: 'Driven by curiosity. Guided by purpose.',
     introduction:
-      'Exploring how technology works — and how to make it more secure. Building my foundation, one concept and one line of code at a time.',
+      'Exploring the systems behind the screen. Learning to build with purpose, understand the details, and think about security from the start.',
     primaryAction: 'Explore my journey',
   },
   about: {

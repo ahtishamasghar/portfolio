@@ -2,7 +2,7 @@
 
 _Last updated: 2026-11-09 (Asia/Karachi). This document supersedes the original Codex Cloud milestones and the outdated deployment notes._
 
-## Current status — deployed and under active development
+## Current status — professional redesign in progress
 
 - **Canonical repository:** [ahtishamasghar/portfolio](https://github.com/ahtishamasghar/portfolio)
 - **Production branch:** `main`; the user has requested recent design and animation changes directly on `main`.
@@ -11,7 +11,7 @@ _Last updated: 2026-11-09 (Asia/Karachi). This document supersedes the original 
 - **Latest verified source commit before this documentation update:** `c7cd49279e068c8fbf713711716dac5eb7fc0130` — `Improve small-label contrast for accessible editorial theme`.
 - **Latest verified deployment:** [GitHub Actions run #42519464660](https://github.com/ahtishamasghar/portfolio/actions/runs/42519464660), **success**. Validation, Pages artifact build, and Pages deployment all succeeded. The associated Playwright suite reported **28 passed**.
 - **Public browser verification:** GitHub confirms successful publication. A separate manual visual check of the live public site across browsers/devices is still recommended; do not equate a successful workflow with independent visual approval.
-- **Current visual identity:** **ATELIER / 04**, light porcelain/white canvas with ink/navy typography, cobalt accents, responsive editorial sections, and a dark animated hero illustration. This is the active stylesheet, not the older violet, green SIGNAL, or earlier editorial concept.
+- **Current implementation:** professional dark editorial redesign with a procedural wire sculpture, larger typography, cobalt accents, a single consolidated stylesheet, and controllable animation. The earlier ATELIER design is historical. Latest redesign deployment verification is pending; the successful run above describes the previous baseline.
 
 ## Resume instructions
 
@@ -53,10 +53,10 @@ _Last updated: 2026-11-09 (Asia/Karachi). This document supersedes the original 
 - The motion system is implemented in `src/motion.css`, `src/components/MotionEffects.tsx`, and `src/components/Reveal.tsx`. Decorative animations honor `prefers-reduced-motion: reduce`; a Playwright assertion checks this behavior.
 - Motion feature commit: `f2d6edcc9f7df0ea7e7c64590ee0afd27d4c59ad`; [successful deployment run](https://github.com/ahtishamasghar/portfolio/actions/runs/42516160432).
 
-### 5. ATELIER / 04 current design and accessibility refinement
+### 5. ATELIER / 04 historical design and accessibility refinement
 
 - After the animation release, a further Obsidian dark variant was developed, then replaced by the current **ATELIER / 04** light-first editorial system.
-- Active stylesheet: **`src/atelier.css`**, imported last from `src/main.tsx` so it can override earlier design layers (`styles.css`, `editorial.css`, `motion.css`).
+- That historical release used `src/atelier.css` as the final override. Milestone 6 replaces the layered cascade with `src/styles.css`.
 - Current hero includes pointer-reactive lighting, animated artwork, telemetry accents, spectrum animation, and a refined mobile layout.
 - Changes include mobile layout corrections and an additional small-label contrast fix.
 - The intermediate visual commit `e80ee213...` failed CI; the follow-up `c7cd492...` passed. **Use the latest successful run**, not the failed intermediate result, as the verified baseline.
@@ -87,13 +87,30 @@ VITE_BASE_PATH=/portfolio/ VITE_SITE_URL=https://ahtishamasghar.github.io/portfo
 
 GitHub Actions also verifies this base path and runs `scripts/verify-project-path.mjs`. See `README.md` for more local workflow details, but note the documentation issue below.
 
-## Current cautions and next maintenance tasks
+## Milestone 6 — professional redesign, first checkpoint
 
-1. **README is stale:** its introduction still describes the original dark/violet palette and says Pages deployment is unverified. Bring it into alignment with the current ATELIER / 04 design and verified deployment in a separate documentation update.
-2. Older stylesheets and design artifacts remain in source. `src/atelier.css` is the final override, so changing earlier CSS without inspecting the cascade may have no visible effect. If consolidating, make it a dedicated refactor with regression checks.
-3. Preserve motion accessibility; test with reduced motion, keyboard navigation, and lower-end mobile devices. Avoid introducing UI that depends on continuous motion to convey essential information.
-4. `npm run check`, desktop/mobile Playwright, automated accessibility, and `/portfolio/` smoke tests are CI-covered. Real Safari/Firefox, screen readers, and hands-on cross-device visual review should still be performed.
-5. The public site has been deployed according to GitHub Actions, but visual quality remains a user-facing judgment and may require further iteration.
-6. Never commit credentials, fabricate professional qualifications, or mark unfinished projects/certificates as completed.
+The user rejected the previous visual design and delegated the new direction, requesting professional presentation and animation. The stale local checkout was synced to `origin/main` at `2754334` before integrating the redesign. Existing deployed fixes and project-path checks were retained.
 
-**State at this update:** repository on `main`; latest source baseline `c7cd492...` successfully tested and deployed, with this `PROGRESS.md` update being a subsequent documentation-only commit.
+Completed:
+
+- Rebuilt hero/navigation with larger editorial typography, a charcoal/cobalt palette, and an original animated three-dimensional wire sculpture.
+- Sculpture motion is capped at 24 fps and 1.5× pixel density, stops off-screen/in hidden tabs, responds gently to mouse movement, and remains decorative.
+- Added a visible global pause/resume control and OS reduced-motion support. Reveal animations and scroll progress honor the shared preference.
+- Reworked About into a readable editorial layout, simplified skill rows, improved contact styling, and retained all truthful personal content and existing interactions.
+- Consolidated the active theme into `src/styles.css`; removed obsolete `atelier.css`, `editorial.css`, `signal.css`, and `motion.css`. They remain recoverable in Git history.
+- Retained the 64px mobile header and natural-height expanded skill layouts from the latest main branch.
+- Formatting, lint, type checking, production build: passed.
+- Desktop/mobile Playwright: **30 passed**, including zero axe violations, real animation pause/resume, reduced motion, keyboard navigation, and clipboard fallback.
+- `/portfolio/` production build and browser smoke test: passed. Default build restored afterward.
+
+## Exact next steps
+
+1. Finish the remaining editorial refinements, refresh the social preview/favicon, and correct the stale README. Inspect desktop/tablet/mobile screenshots.
+2. Run affected validation, update this log, commit, and push to `main` without force. Fetch and check for concurrent changes before each push.
+3. Inspect the GitHub Actions web run for the exact pushed commit. `api.github.com` and the public Pages domain are currently denied by the cloud network policy; Git operations and GitHub web pages work. Do not claim a fresh deployment is verified based on older successful runs.
+4. A temporary Git stash named “Professional redesign draft before syncing latest main” preserves the initial draft; it has been integrated. Do not reapply it. The old feature branch is historical; continue on `main`.
+5. For local tests use `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium`. `scripts/verify-project-path.mjs` now accepts the same override, while CI uses its installed matching browser.
+6. Real Safari/Firefox, screen readers, and hands-on device testing remain outside the executed Chromium/axe checks.
+7. Never invent credentials, employment, completed projects, certification achievements, or LinkedIn links.
+
+Current session changes are tested locally. The new deployment must still be checked after pushing; the prior successful production baseline is recorded above.

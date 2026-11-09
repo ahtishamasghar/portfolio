@@ -65,8 +65,8 @@ export function Header() {
             <span>.</span>
           </span>
           <span className="wordmark-label">
-            {portfolio.shortName.toUpperCase()}
-            <span>PERSONAL PORTFOLIO</span>
+            {portfolio.shortName}
+            <span>ASGHAR</span>
           </span>
         </a>
         <nav className="desktop-nav" aria-label="Main navigation">
@@ -81,7 +81,7 @@ export function Header() {
           ))}
         </nav>
         <a className="header-contact" href="#contact">
-          Let’s connect <ArrowUpRight size={15} aria-hidden="true" />
+          Get in touch <ArrowUpRight size={15} aria-hidden="true" />
         </a>
         <button
           ref={toggleRef}
