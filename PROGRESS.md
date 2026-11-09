@@ -2,16 +2,16 @@
 
 _Updated for the light redesign on 2026-11-09. This document supersedes older visual/deployment notes._
 
-## Current status — editorial motion redesign validated locally; deployment pending
+## Current status — editorial motion redesign deployed and verified
 
 - **Canonical repository:** [ahtishamasghar/portfolio](https://github.com/ahtishamasghar/portfolio)
 - **Production branch:** `main`; the user has requested recent design and animation changes directly on `main`.
 - **GitHub Pages URL:** https://ahtishamasghar.github.io/portfolio/
 - **Deployment method:** GitHub Actions builds the Vite site for the `/portfolio/` base path and deploys the generated `dist/` artifact when the validated `main` branch changes.
-- **Latest verified source commit before this documentation update:** `375c533` — `Redesign portfolio with light surfaces and cobalt accents`.
-- **Latest verified deployment:** [GitHub Actions run #42581422928](https://github.com/ahtishamasghar/portfolio/actions/runs/42581422928), **success** for exact source `375c533`. Validation, Pages artifact build, and Pages deployment all succeeded. The corresponding local Playwright suite reported **30 passed**.
+- **Latest verified source commit before this documentation update:** `f60da49` — `Redesign portfolio with editorial layout and visible motion`.
+- **Latest verified deployment:** [GitHub Actions run #42582545726](https://github.com/ahtishamasghar/portfolio/actions/runs/42582545726), **success** for exact source `f60da49`. Validation, Pages artifact build, and Pages deployment all succeeded. The corresponding local Playwright suite reported **30 passed**.
 - **Public browser verification:** GitHub confirms successful publication. A separate manual visual check of the live public site across browsers/devices is still recommended; do not equate a successful workflow with independent visual approval.
-- **Current implementation:** warm-paper editorial layout with mint and indigo accents, stronger typography, visible animated hero sculpture, orbit rings and moving typography. The previously deployed light design is historical; this new revision is locally validated and awaiting publication verification.
+- **Current implementation:** warm-paper editorial layout with mint and indigo accents, stronger typography, visible animated hero sculpture, orbit rings and moving typography. The previously deployed light design is historical; this revision passed local and GitHub validation and deployed successfully.
 
 ## Resume instructions
 
@@ -143,13 +143,13 @@ The user rejected the previous appearance and reported that animation was not vi
 - Local lint, typecheck, build and all **30 desktop/mobile browser tests passed**, including axe checks and canvas pause/reduced-motion tests.
 - Verified the marquee changes position when motion is enabled and stops when paused. Reviewed desktop and mobile screenshots.
 - `/portfolio/` production build and browser smoke check passed; default build restored.
-- Pending: commit and push the validated milestone, verify its GitHub Actions deployment, then record the source commit and run URL.
+- Pushed as `f60da49`; GitHub Actions [run #42582545726](https://github.com/ahtishamasghar/portfolio/actions/runs/42582545726) successfully validated and deployed this exact commit.
 
 ## Exact next steps and verification limits
 
 1. Continue from `main` and this progress log. Read Git history/status, fetch and inspect concurrent changes before editing or pushing; never force-push or restart the project.
-2. Push the editorial motion redesign and verify the exact source commit’s GitHub Actions validation and deployment; do not describe it as deployed before verification.
-3. After deployment, record the source commit and successful run URL with a documentation-only `[skip ci]` commit. Future implementation changes should run the documented checks before push.
+2. The editorial motion redesign was deployed successfully from `f60da49`. Preserve it and continue from `main` and this progress log.
+3. This documentation-only update uses `[skip ci]` to avoid redeploying unchanged site files. Future implementation changes should run the documented checks before push.
 4. `api.github.com` and the live Pages domain are denied by the current cloud network policy. Git and GitHub web pages work. Verify Actions via its web run; independent live-site visual inspection remains unavailable. Local desktop/tablet/mobile screenshots have been inspected.
 5. A temporary stash named “Professional redesign draft before syncing latest main” preserves an earlier draft. It is already integrated; do not reapply it. The old feature branch is historical.
 6. Use `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium` for local browser checks and `scripts/verify-project-path.mjs`; CI installs the matching browser itself.
