@@ -675,7 +675,6 @@ h1 > .hero-first-name {
   font-size: clamp(14px, 2.5vw, 20px);
   font-weight: 600;
   letter-spacing: 0.25em;
-  text-transform: uppercase;
   margin-bottom: 12px;
 }
 
