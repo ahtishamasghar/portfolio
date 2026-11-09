@@ -17,29 +17,8 @@ const font = (
     ),
   )
 ).toString('base64')
-// Static vector counterpart to the live procedural sculpture.
-const point = (u, v) => {
-  const radius = 1.25 + 0.48 * Math.cos(v)
-  const x = radius * Math.cos(u),
-    y = radius * Math.sin(u),
-    z = 0.48 * Math.sin(v)
-  const py = y * Math.cos(0.56) - z * Math.sin(0.56)
-  const pz = y * Math.sin(0.56) + z * Math.cos(0.56)
-  const px = x * Math.cos(-0.48) - py * Math.sin(-0.48)
-  const ry = x * Math.sin(-0.48) + py * Math.cos(-0.48)
-  const perspective = 4.8 / (4.8 - pz)
-  return `${(260 + px * 116 * perspective).toFixed(2)},${(260 + ry * 116 * perspective).toFixed(2)}`
-}
-const rings = Array.from(
-  { length: 34 },
-  (_, ring) =>
-    `<polyline points="${Array.from({ length: 101 }, (_, step) => point((step / 100) * Math.PI * 2, (ring / 34) * Math.PI * 2)).join(' ')}"/>`,
-).join('')
-const segments = Array.from(
-  { length: 60 },
-  (_, ring) =>
-    `<polyline points="${Array.from({ length: 41 }, (_, step) => point((ring / 60) * Math.PI * 2, (step / 40) * Math.PI * 2)).join(' ')}"/>`,
-).join('')
+// Reuse the same local angular artwork as the live hero.
+const blueprint = await readFile(new URL('../src/assets/blueprint.svg', import.meta.url), 'utf8')
 const browser = await chromium.launch({
   executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH || undefined,
 })
@@ -53,11 +32,11 @@ try {
   *{box-sizing:border-box}body{margin:0;width:1200px;height:630px;background:#f5f3ed;color:#142c36;font-family:Manrope,sans-serif;padding:54px 70px;position:relative;overflow:hidden;isolation:isolate}
   .label{display:flex;gap:11px;align-items:center;font-size:11px;letter-spacing:1.7px;color:#50617d;margin:0 0 37px}.label:before{content:'';width:7px;height:7px;border-radius:50%;background:#27765f;box-shadow:0 0 0 5px #27765f0b}
   .name{font-size:76px;line-height:1.07;letter-spacing:-4px;margin:0;font-weight:650;width:590px;position:relative;z-index:1}.first{display:block;font-size:35px;color:#536b6d;font-weight:400;letter-spacing:-1px;margin-bottom:16px}.last{display:block;max-width:470px;color:#173f48}.role{font-size:18px;color:#304b4c;margin-top:27px;letter-spacing:-.3px}
-  .art-panel{position:absolute;right:60px;top:62px;width:450px;height:450px;border:1px solid #fff;border-radius:38px;background:linear-gradient(145deg,#173f48,#214e54 60%,#173648);box-shadow:0 30px 70px #173f480b;z-index:-1;overflow:hidden;transform:rotate(4deg)}
+  .art-panel{position:absolute;right:60px;top:62px;width:450px;height:450px;border:1px solid #fff;border-radius:0;background:linear-gradient(145deg,#173f48,#214e54 60%,#173648);box-shadow:0 30px 70px #173f480b;z-index:-1;overflow:hidden}
   .grid{position:absolute;inset:0;background-image:linear-gradient(#27765f08 1px,transparent 1px),linear-gradient(90deg,#27765f08 1px,transparent 1px);background-size:30px 30px;mask-image:radial-gradient(ellipse,black,transparent 75%)}
-  .art{position:absolute;inset:-8px;transform:rotate(-4deg)}svg{width:100%;height:100%}.art-note{position:absolute;bottom:28px;left:0;right:0;text-align:center;color:#d4eee5;letter-spacing:2px;font-size:9px;transform:rotate(-4deg)}
-  .orbit-dot{position:absolute;width:12px;height:12px;background:#27765f;border:3px solid #fff;border-radius:50%;right:37px;top:150px;box-shadow:0 4px 12px #27765f3a}.footer{position:absolute;bottom:36px;left:70px;right:70px;border-top:1px solid #142c3614;padding-top:20px;display:flex;justify-content:space-between;font-size:10px;color:#566780;letter-spacing:1.3px}.footer strong{font-weight:600;color:#27765f}
-  </style></head><body><p class="label">PERSONAL PORTFOLIO</p><h1 class="name"><span class="first">${escape(portfolio.firstName)}</span><span class="last">${escape(portfolio.displayName)}</span></h1><p class="role">${escape(portfolio.headline)}</p><div class="art-panel"><div class="grid"></div><div class="art"><svg viewBox="0 0 520 520" fill="none" stroke="#9bf0d8" stroke-width=".72" stroke-opacity=".38">${rings}${segments}</svg></div><span class="orbit-dot"></span><div class="art-note">SECURITY · SYSTEMS · CODE</div></div><div class="footer"><span>CURIOUS ABOUT TECHNOLOGY. THOUGHTFUL ABOUT SECURITY.</span><strong>${escape(portfolio.githubHandle)}</strong></div></body></html>`)
+  .art{position:absolute;inset:0}svg{width:100%;height:100%}.art-note{position:absolute;bottom:28px;left:0;right:0;text-align:center;color:#d4eee5;letter-spacing:2px;font-size:9px}
+  .footer{position:absolute;bottom:36px;left:70px;right:70px;border-top:1px solid #142c3614;padding-top:20px;display:flex;justify-content:space-between;font-size:10px;color:#566780;letter-spacing:1.3px}.footer strong{font-weight:600;color:#27765f}
+  </style></head><body><p class="label">PERSONAL PORTFOLIO</p><h1 class="name"><span class="first">${escape(portfolio.firstName)}</span><span class="last">${escape(portfolio.displayName)}</span></h1><p class="role">${escape(portfolio.headline)}</p><div class="art-panel"><div class="grid"></div><div class="art">${blueprint}</div><div class="art-note">SECURITY · SYSTEMS · CODE</div></div><div class="footer"><span>CURIOUS ABOUT TECHNOLOGY. THOUGHTFUL ABOUT SECURITY.</span><strong>${escape(portfolio.githubHandle)}</strong></div></body></html>`)
   await page.evaluate(() => document.fonts.ready)
   await page.screenshot({ path: new URL('../public/og-image.png', import.meta.url).pathname })
   console.log('Generated public/og-image.png (1200 × 630).')

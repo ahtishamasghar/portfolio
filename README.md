@@ -1,6 +1,6 @@
 # Muhammad Ahtisham Asghar — Personal Portfolio
 
-A complete, light-first portfolio for a **Cybersecurity & Technology Enthusiast**, built with React, TypeScript, Vite, Tailwind CSS, Motion for React, and Lucide React. The editorial design combines warm paper tones, ink typography, mint and indigo accents, and a visibly rotating wire sculpture in responsive layouts. No backend, API keys, analytics, or paid services are required.
+A complete, light-first portfolio for a **Cybersecurity & Technology Enthusiast**, built with React, TypeScript, Vite, Tailwind CSS, Motion for React, and Lucide React. The editorial design combines warm paper tones, ink typography, mint and indigo accents, and an angular blueprint graphic with flowing paths and gliding geometric panels in responsive layouts. No backend, API keys, analytics, or paid services are required.
 
 The content accurately represents an ongoing BS in Cybersecurity at the University of Sargodha. Learning areas are not presented as professional proficiency. Google certification is in progress; Cisco completion remains unconfirmed. The projects collection is intentionally empty, and LinkedIn is an explicit, non-clickable placeholder.
 
@@ -68,8 +68,9 @@ public/
   licenses/                     Locally distributed font licenses
 scripts/generate-social-image.mjs
 src/
+  assets/blueprint.svg          Original angular hero artwork
   content/portfolio.ts          Identity, copy, skills, education, certificates, projects
-  components/                  Sections, animation controls, and procedural sculpture
+  components/                  Sections, animation controls, and blueprint graphic
   motion/                      Shared pause/resume and reduced-motion preferences
   App.tsx                       Page composition and Motion settings
   main.tsx                      React entry point
@@ -102,9 +103,9 @@ Section titles and visual labels live in their respective `src/components` files
 
 ### Motion and visual styling
 
-The base theme is in `src/styles.css`, with the current editorial styling in `src/hero-refresh.css` and `src/sections-refresh.css`. `SignalSculpture.tsx` renders the original wire sculpture in Canvas 2D without WebGL, image downloads, or additional runtime dependencies. It is capped at 24 fps and 1.5× pixel density, stops when off-screen or the tab is hidden, and responds subtly to mouse movement.
+The base theme is in `src/styles.css`, with the current editorial styling in `src/hero-refresh.css` and `src/sections-refresh.css`. `BlueprintVisual.tsx` uses the local `src/assets/blueprint.svg` artwork with linear flowing paths and gliding geometric panels. The hero uses SVG and CSS animation without Canvas, WebGL, or additional runtime dependencies. Its shapes have straight edges and do not spin.
 
-The visible **Motion on / Motion paused** control stops decorative animation and disables entrance transitions and smooth scrolling. System reduced-motion preferences take priority. The graphic is decorative and does not carry essential content. `MotionProvider` supplies the shared preference to the sculpture, reveal effects, and scroll progress.
+The visible **Motion on / Motion paused** control stops decorative animation and disables entrance transitions and smooth scrolling. System reduced-motion preferences take priority. The graphic is decorative and does not carry essential content. `MotionProvider` supplies the shared preference to the blueprint graphic, reveal effects, and scroll progress.
 
 After editing the name or headline, regenerate the social image and commit it:
 
@@ -114,7 +115,7 @@ npm run social:image
 PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npm run social:image
 ```
 
-The generator uses the centralized identity and the local font. No external image service is involved. Both fonts use the SIL Open Font License; copies are in `public/licenses/`.
+The generator uses the centralized identity, the local font, and `src/assets/blueprint.svg`. No external image service is involved. Both fonts use the SIL Open Font License; copies are in `public/licenses/`.
 
 ## Add a real project
 

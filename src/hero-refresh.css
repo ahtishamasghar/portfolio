@@ -106,55 +106,9 @@ h1 > .hero-first-name {
   background: radial-gradient(circle at 65% 37%, #285960 0%, #193d4b 38%, #102b3c 100%);
   box-shadow: 16px 16px 0 #d9e7de;
 }
-.sculpture-stage {
+.blueprint-stage {
   aspect-ratio: 1.04;
   overflow: hidden;
-}
-.sculpture-halo {
-  inset: 12%;
-  background: radial-gradient(circle, #83e3b32b, transparent 66%);
-}
-.signal-sculpture {
-  position: relative;
-  z-index: 2;
-}
-.orbit-ring {
-  position: absolute;
-  z-index: 1;
-  border: 1px solid #a4f6d75c;
-  border-radius: 50%;
-  inset: 16%;
-  pointer-events: none;
-}
-.orbit-ring-one {
-  animation: orbit-one 11s linear infinite;
-  transform: rotateX(65deg) rotate(-24deg);
-}
-.orbit-ring-two {
-  inset: 10%;
-  border-color: #b4ead329;
-  animation: orbit-two 16s linear infinite;
-}
-.orbit-ring::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: -4px;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #c7ffdc;
-  box-shadow: 0 0 15px #9bffd5;
-}
-@keyframes orbit-one {
-  to {
-    transform: rotateX(65deg) rotate(336deg);
-  }
-}
-@keyframes orbit-two {
-  to {
-    transform: rotate(-360deg);
-  }
 }
 .art-label {
   color: #d4eee5;
@@ -261,7 +215,7 @@ h1 > .hero-first-name {
     width: 100%;
     margin: 0;
   }
-  .sculpture-stage {
+  .blueprint-stage {
     aspect-ratio: 1.04;
   }
   .art-controls > span {
@@ -289,11 +243,92 @@ h1 > .hero-first-name {
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-marquee-track,
-  .orbit-ring {
+  .blueprint-visual * {
     animation: none;
   }
 }
 html[data-motion='off'] .hero-marquee-track,
-html[data-motion='off'] .orbit-ring {
+html[data-motion='off'] .blueprint-visual * {
   animation: none;
+}
+
+/* Layered blueprint. Motion follows straight paths; the composition never rotates. */
+.blueprint-stage {
+  position: relative;
+  isolation: isolate;
+}
+.blueprint-visual {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  align-items: center;
+}
+.blueprint-visual svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+.blueprint-plane {
+  animation: blueprint-glide 7s ease-in-out infinite alternate;
+}
+.blueprint-plane-middle {
+  animation-delay: -2.5s;
+}
+.blueprint-plane-front {
+  animation-delay: -5s;
+}
+.blueprint-flow {
+  animation: blueprint-flow 8s linear infinite;
+}
+.blueprint-visual[data-active='false'] * {
+  animation-play-state: paused;
+}
+@keyframes blueprint-glide {
+  from {
+    transform: translateY(-7px);
+  }
+  to {
+    transform: translateY(7px);
+  }
+}
+@keyframes blueprint-flow {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -456;
+  }
+}
+body .monogram,
+body .desktop-nav,
+body .header-contact,
+body .menu-toggle,
+body .button,
+body .motion-toggle,
+body .hero-art-wrapper,
+body .hero-board-tag,
+body .about-detail,
+body .panel,
+body .principle,
+body .principle > svg,
+body .principle:nth-child(2) > svg,
+body .principle:nth-child(3) > svg,
+body .skill-card,
+body .skill-icon,
+body .icon-box,
+body .status-badge,
+body .project-empty-art > span,
+body .contact-panel,
+body .placeholder-label,
+body .back-to-top > span {
+  border-radius: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .blueprint-visual * {
+    animation: none !important;
+  }
+}
+html[data-motion='off'] .blueprint-visual * {
+  animation: none !important;
 }

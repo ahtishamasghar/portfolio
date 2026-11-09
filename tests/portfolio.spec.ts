@@ -260,35 +260,43 @@ test('provides useful contact information without JavaScript', async ({ browser 
 
 test('decorative animation respects the device reduced-motion preference', async ({ page }) => {
   await page.goto('/')
-  await expect(page.locator('.signal-sculpture')).toHaveAttribute('aria-hidden', 'true')
+  await expect(page.locator('.blueprint-visual')).toHaveAttribute('aria-hidden', 'true')
   await expect(page.locator('.scroll-progress')).toHaveAttribute('aria-hidden', 'true')
+  await expect(page.locator('canvas, .orbit-ring')).toHaveCount(0)
   await expect(
     page.getByRole('button', { name: 'Reduced motion enabled by your device' }),
   ).toBeDisabled()
-  const canvas = page.locator('.signal-sculpture')
-  const before = await canvas.evaluate((element: HTMLCanvasElement) => element.toDataURL())
-  await page.waitForTimeout(150)
-  expect(await canvas.evaluate((element: HTMLCanvasElement) => element.toDataURL())).toBe(before)
+  const flow = page.locator('.blueprint-flow')
+  await expect(flow).toHaveCSS('animation-name', 'none')
+  const before = await flow.evaluate((element) => getComputedStyle(element).strokeDashoffset)
+  await page.waitForTimeout(180)
+  expect(await flow.evaluate((element) => getComputedStyle(element).strokeDashoffset)).toBe(before)
 })
 
-test('visitors can pause and resume the animated sculpture', async ({ page }) => {
+test('visitors can pause and resume the animated blueprint', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'no-preference' })
   await page.goto('/')
-  const canvas = page.locator('.signal-sculpture')
-  await canvas.scrollIntoViewIfNeeded()
-  const before = await canvas.evaluate((element: HTMLCanvasElement) => element.toDataURL())
+  const visual = page.locator('.blueprint-visual')
+  const flow = page.locator('.blueprint-flow')
+  await visual.scrollIntoViewIfNeeded()
+  await expect(visual).toHaveAttribute('data-active', 'true')
+  const before = await flow.evaluate((element) => getComputedStyle(element).strokeDashoffset)
   await expect
-    .poll(() => canvas.evaluate((element: HTMLCanvasElement) => element.toDataURL()))
+    .poll(() => flow.evaluate((element) => getComputedStyle(element).strokeDashoffset))
     .not.toBe(before)
   await page.getByRole('button', { name: 'Pause animations' }).click()
   await expect(page.locator('html')).toHaveAttribute('data-motion', 'off')
-  const paused = await canvas.evaluate((element: HTMLCanvasElement) => element.toDataURL())
+  await expect(flow).toHaveCSS('animation-name', 'none')
+  const paused = await flow.evaluate((element) => getComputedStyle(element).strokeDashoffset)
   await page.waitForTimeout(180)
-  expect(await canvas.evaluate((element: HTMLCanvasElement) => element.toDataURL())).toBe(paused)
+  expect(await flow.evaluate((element) => getComputedStyle(element).strokeDashoffset)).toBe(paused)
   await page.getByRole('button', { name: 'Resume animations' }).click()
   await expect
-    .poll(() => canvas.evaluate((element: HTMLCanvasElement) => element.toDataURL()))
+    .poll(() => flow.evaluate((element) => getComputedStyle(element).strokeDashoffset))
     .not.toBe(paused)
+  await page.locator('#contact').scrollIntoViewIfNeeded()
+  await expect(visual).toHaveAttribute('data-active', 'false')
+  await expect(flow).toHaveCSS('animation-play-state', 'paused')
 })
 
 test('mobile layout keeps navigation compact and expanded skills at natural height', async ({

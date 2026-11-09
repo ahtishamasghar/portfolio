@@ -3,7 +3,7 @@ import { portfolio } from '../content/portfolio'
 import { Github } from './BrandIcons'
 import { ExternalLink } from './Primitives'
 import { Reveal } from './Reveal'
-import { SignalSculpture } from './SignalSculpture'
+import { BlueprintVisual } from './BlueprintVisual'
 import { MotionToggle } from './MotionToggle'
 
 export function Hero() {
@@ -43,11 +43,8 @@ export function Hero() {
           </div>
         </Reveal>
         <div className="hero-art-wrapper">
-          <div className="sculpture-stage">
-            <div className="sculpture-halo" aria-hidden="true" />
-            <div className="orbit-ring orbit-ring-one" aria-hidden="true" />
-            <div className="orbit-ring orbit-ring-two" aria-hidden="true" />
-            <SignalSculpture />
+          <div className="blueprint-stage">
+            <BlueprintVisual />
             <span className="art-label art-label-top" aria-hidden="true">
               EXPLORING WHAT’S POSSIBLE
             </span>

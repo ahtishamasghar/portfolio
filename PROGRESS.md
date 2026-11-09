@@ -1,8 +1,8 @@
 # Portfolio implementation progress
 
-_Updated for the light redesign on 2026-11-09. This document supersedes older visual/deployment notes._
+_Updated for the angular blueprint redesign on 2026-11-09. This document supersedes older visual/deployment notes._
 
-## Current status — editorial motion redesign deployed and verified
+## Current status — angular blueprint redesign validated; deployment pending
 
 - **Canonical repository:** [ahtishamasghar/portfolio](https://github.com/ahtishamasghar/portfolio)
 - **Production branch:** `main`; the user has requested recent design and animation changes directly on `main`.
@@ -11,7 +11,7 @@ _Updated for the light redesign on 2026-11-09. This document supersedes older vi
 - **Latest verified source commit before this documentation update:** `f60da49` — `Redesign portfolio with editorial layout and visible motion`.
 - **Latest verified deployment:** [GitHub Actions run #42582545726](https://github.com/ahtishamasghar/portfolio/actions/runs/42582545726), **success** for exact source `f60da49`. Validation, Pages artifact build, and Pages deployment all succeeded. The corresponding local Playwright suite reported **30 passed**.
 - **Public browser verification:** GitHub confirms successful publication. A separate manual visual check of the live public site across browsers/devices is still recommended; do not equate a successful workflow with independent visual approval.
-- **Current implementation:** warm-paper editorial layout with mint and indigo accents, stronger typography, visible animated hero sculpture, orbit rings and moving typography. The previously deployed light design is historical; this revision passed local and GitHub validation and deployed successfully.
+- **Current implementation:** warm-paper editorial layout with straight-edged cards and controls, an angular layered blueprint graphic, gliding panels and linear flowing light paths. The spinning wheel, its Canvas renderer, orbit rings, and social-preview torus are removed. This revision passed local checks; publication is pending.
 
 ## Resume instructions
 
@@ -145,11 +145,25 @@ The user rejected the previous appearance and reported that animation was not vi
 - `/portfolio/` production build and browser smoke check passed; default build restored.
 - Pushed as `f60da49`; GitHub Actions [run #42582545726](https://github.com/ahtishamasghar/portfolio/actions/runs/42582545726) successfully validated and deployed this exact commit.
 
+## Milestone 10 — remove the spinning wheel and curved edges
+
+The user explicitly requested complete removal of the spinning wheel and a different visual approach. The reference to curved ends was interpreted as a preference for straight edges.
+
+- Deleted `SignalSculpture.tsx` and removed the wheel, halo, orbit markup, and obsolete animation styles.
+- Added `BlueprintVisual.tsx` and shared `src/assets/blueprint.svg`: layered angular panels glide vertically while highlights follow straight paths. There is no rotation in this hero graphic.
+- Preserved pause/resume, operating-system reduced motion, off-screen and hidden-tab suspension, accessible navigation, and truthful content.
+- Squared cards, buttons, icon containers, badges, back-to-top control, social artwork, and favicon.
+- Replaced the wheel in the 1200×630 social image and its generator; README documents the new artwork.
+- Formatting, lint, type check, and production build passed. **30 desktop/mobile Playwright tests passed**, including axe scans and new tests for blueprint motion, pause/resume, reduced motion, and off-screen pause.
+- Reviewed 320px/390px/768px/1440px local previews. No horizontal overflow or Canvas elements remain.
+- `/portfolio/` project-path build and browser smoke verification passed; default build restored.
+- Pending: commit and push this milestone, verify the exact source commit’s GitHub Actions deployment, and record the run URL.
+
 ## Exact next steps and verification limits
 
 1. Continue from `main` and this progress log. Read Git history/status, fetch and inspect concurrent changes before editing or pushing; never force-push or restart the project.
-2. The editorial motion redesign was deployed successfully from `f60da49`. Preserve it and continue from `main` and this progress log.
-3. This documentation-only update uses `[skip ci]` to avoid redeploying unchanged site files. Future implementation changes should run the documented checks before push.
+2. Push the angular blueprint revision and check validation and Pages deployment for its exact source commit. Do not describe this revision as deployed before verification.
+3. After successful deployment, record its source commit and run URL in a documentation-only `[skip ci]` commit. Future changes should run the documented checks before push.
 4. `api.github.com` and the live Pages domain are denied by the current cloud network policy. Git and GitHub web pages work. Verify Actions via its web run; independent live-site visual inspection remains unavailable. Local desktop/tablet/mobile screenshots have been inspected.
 5. A temporary stash named “Professional redesign draft before syncing latest main” preserves an earlier draft. It is already integrated; do not reapply it. The old feature branch is historical.
 6. Use `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium` for local browser checks and `scripts/verify-project-path.mjs`; CI installs the matching browser itself.
