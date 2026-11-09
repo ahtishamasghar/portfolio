@@ -2,16 +2,16 @@
 
 _Updated for the neutral and cobalt palette on 2026-11-09. This document supersedes older visual/deployment notes._
 
-## Current status — neutral and cobalt palette validated locally; publication pending
+## Current status — neutral and cobalt palette deployed and verified
 
 - **Canonical repository:** [ahtishamasghar/portfolio](https://github.com/ahtishamasghar/portfolio)
 - **Production branch:** `main`; the user has requested recent design and animation changes directly on `main`.
 - **GitHub Pages URL:** https://ahtishamasghar.github.io/portfolio/
 - **Deployment method:** GitHub Actions builds the Vite site for the `/portfolio/` base path and deploys the generated `dist/` artifact when the validated `main` branch changes.
-- **Latest verified source commit before this documentation update:** `bbfa576` — `Add security animation and unify rounded teal theme`.
-- **Latest verified deployment:** [GitHub Actions run #42619607816](https://github.com/ahtishamasghar/portfolio/actions/runs/42619607816), **success** for exact source `bbfa576`. Validation, Pages artifact build, and Pages deployment all succeeded. The corresponding local Playwright suite reported **30 passed**.
+- **Latest verified source commit before this documentation update:** `064c21e` — `Refine portfolio with neutral surfaces and cobalt accents`.
+- **Latest verified deployment:** [GitHub Actions run #42622846062](https://github.com/ahtishamasghar/portfolio/actions/runs/42622846062), **success** for exact source `064c21e`. Validation, Pages artifact build, and Pages deployment all succeeded. The corresponding local Playwright suite reported **30 passed**.
 - **Public browser verification:** GitHub confirms successful publication. A separate manual visual check of the live public site across browsers/devices is still recommended; do not equate a successful workflow with independent visual approval.
-- **Current implementation:** warm white surfaces, graphite typography, and restrained cobalt accents; rounded cards and controls; a blue shield-and-network hero animation on a pale silver panel. The white education overlay inside the hero remains removed. The palette revision passed local browser and accessibility checks; the previously verified deployment above is the earlier teal theme until the new workflow is confirmed.
+- **Current implementation:** warm white surfaces, graphite typography, and restrained cobalt accents; rounded cards and controls; a blue shield-and-network hero animation on a pale silver panel. The white education overlay inside the hero remains removed. This revision passed local and GitHub validation and deployed successfully.
 
 ## Resume instructions
 
@@ -182,13 +182,14 @@ The user rejected the teal/mint colour scheme and requested a more professional 
 - Recoloured the shared security SVG, browser theme colour, favicon, and generated social image. Updated the README design description.
 - Preserved truthful content, rounded edges, global pause/resume, reduced-motion handling, and all existing interactions.
 - Lint, type checking, and production build passed. All **30 desktop/mobile Playwright tests passed**, including automated WCAG scans, responsive overflow, links, clipboard behavior, and actual security animation controls.
-- Visually reviewed desktop, tablet, mobile, contact/learning/skill sections, and the social image. Final formatting, lint, type check and production build passed. The `/portfolio/` production build and browser smoke check passed; the default build was restored afterward. Publication is the remaining checkpoint step.
+- Visually reviewed desktop, tablet, mobile, contact/learning/skill sections, and the social image. Final formatting, lint, type check and production build passed. The `/portfolio/` production build and browser smoke check passed; the default build was restored afterward.
+- Pushed as `064c21e`; [GitHub Actions run #42622846062](https://github.com/ahtishamasghar/portfolio/actions/runs/42622846062) successfully validated, built and deployed that exact source commit. No implementation or deployment work remains pending. Independent public-site visual inspection remains limited as documented below.
 
 ## Exact next steps and verification limits
 
 1. Continue from `main` and this progress log. Read Git history/status, fetch and inspect concurrent changes before editing or pushing; never force-push or restart the project.
-2. Commit and push the locally validated palette revision, then verify the exact source SHA and all jobs in the resulting GitHub Actions run. Record that source SHA/run here; do not describe publication as verified before it succeeds.
-3. After publication is confirmed, use a documentation-only verification commit with `[skip ci]` to avoid redeploying unchanged site files. Future changes should run the documented checks before push.
+2. The neutral and cobalt palette is deployed from `064c21e`. Continue from `main` and this log; preserve completed work. No further implementation step is pending for this request.
+3. This documentation-only verification commit uses `[skip ci]` to avoid redeploying unchanged site files. Future changes should run the documented checks before push.
 4. `api.github.com` and the live Pages domain are denied by the current cloud network policy. Git and GitHub web pages work. Verify Actions via its web run; independent live-site visual inspection remains unavailable. Local desktop/tablet/mobile screenshots have been inspected.
 5. A temporary stash named “Professional redesign draft before syncing latest main” preserves an earlier draft. It is already integrated; do not reapply it. The old feature branch is historical.
 6. Use `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium` for local browser checks and `scripts/verify-project-path.mjs`; CI installs the matching browser itself.
